@@ -1,13 +1,6 @@
 <template>
   <router-view v-if="!devt" />
-  <div
-    v-else
-    :style="{
-      background: `url('./src/assets/rick.gif') `,
-      width: '100dvw',
-      height: '100dvh',
-    }"
-  ></div>
+  <div v-else :style="style"></div>
   <teleport to="body">
     <NotificationGroup group="main">
       <div
@@ -97,8 +90,15 @@
 </template>
 
 <script setup>
-import { inject } from "vue";
+import { computed, inject } from "vue";
 import InstallPrompt from "@/components/others/pwaInstallPrompt.vue";
 import DevtBlocked from "@/components/others/devtBlocked.vue";
 const devt = inject("devt");
+
+const imageURL = new URL("@/assets/rick.gif", import.meta.url).href;
+const style = computed(() => ({
+  background: `url('${imageURL}')`,
+  width: "100dvw",
+  height: "100dvh",
+}));
 </script>
