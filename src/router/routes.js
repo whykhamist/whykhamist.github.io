@@ -11,6 +11,28 @@ export default [
           title: import.meta.env.VITE_PRODUCT_NAME,
         },
       },
+      {
+        path: "/docs",
+        component: () => import("@/pages/docs/index.vue"),
+        children: [
+          {
+            path: "button",
+            name: "button",
+            component: () => import("@/pages/docs/components/button/index.vue"),
+            meta: {
+              title: "Button",
+            },
+          },
+          {
+            path: "input",
+            name: "input",
+            component: () => import("@/pages/docs/components/input/index.vue"),
+            meta: {
+              title: "Input",
+            },
+          },
+        ],
+      },
     ],
   },
   {
