@@ -1,15 +1,12 @@
 export default [
   {
     path: "/",
-    component: () => import("@/layouts/public.vue"),
+    component: () => import("@/layouts/main.vue"),
     children: [
       {
         path: "/",
         name: "HomePage",
         component: () => import("@/pages/home/index.vue"),
-        // redirect: {
-        //   name: "settings",
-        // },
         meta: {
           title: import.meta.env.VITE_PRODUCT_NAME,
         },
