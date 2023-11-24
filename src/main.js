@@ -15,7 +15,7 @@ import TrapFocus from "@/plugins/directives/trapFocus";
 import HackedText from "./plugins/directives/hackedText";
 
 import PWAInstallPrompt from "@/plugins/pwaInstallPrompt";
-import DevDetect from "@/plugins/devDetect";
+import DevDetect from "@/plugins/devdetect";
 import Themed from "@/plugins/themed";
 
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
