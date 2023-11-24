@@ -22,7 +22,8 @@
       <MainSideBar
         v-if="!isScreenSmaller"
         v-model:menu="menu"
-        v-model:collapsed="sideCollapsed"
+        :collapsed="false"
+        hideCollapse
         class="fixed bottom-16 top-16"
         :style="sidebarStyle"
         @expandStart="onExpand(true)"
@@ -48,7 +49,7 @@
             </transition>
           </router-view>
         </PageContainer>
-        <MinFooter />
+        <MinFooter v-if="false" />
       </Layout>
     </PageContainer>
     <TScrollUp
@@ -99,7 +100,32 @@ const menu = reactive([
   {
     title: "Main Navigation",
     hidden: false,
-    links: [],
+    links: [
+      {
+        label: "Components",
+        sub: [
+          {
+            label: "Button",
+            to: { name: "button" },
+          },
+          {
+            label: "Input",
+            to: { name: "input" },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Others",
+    hidden: false,
+    links: [
+      {
+        label: "Unauthorized",
+        to: { name: "401" },
+        icon: null,
+      },
+    ],
   },
 ]);
 
