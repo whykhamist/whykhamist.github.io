@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ['main']
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -17,8 +17,22 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: true
+
+env:
+  VITE_PRODUCT_NAME: "MITD Template Docs"
+  VITE_SHORT_NAME: "MITD Template Docs"
+  VITE_DESCRIPTION: "MITD Template Docs"
+  VITE_OFFICE_NAME: "City Mayors Office - Management Information Technology Division"
+
+  # Enable Access to Dev Tools
+  VITE_DEV_TOOLS: false
+
+  # set to true to enable local storage encryption
+  VITE_STORE_ENCRYPT: true
+  VITE_STORE_SALT: 8063dea6c93452ed553445c1f0ff70e909ebf0c1bb18df64d7039a86f2386a2b9f5bb591ef9eb30682602a0ddf0409afe2e72f93582b5f70325341754157e8bf
+  VITE_STORE_PREFIX: BAGUIO
 
 jobs:
   # Single deploy job since we're just deploying
@@ -34,7 +48,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'npm'
+          cache: "npm"
       - name: Install dependencies
         run: npm install
       - name: Build
@@ -45,7 +59,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload dist repository
-          path: './dist'
+          path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
