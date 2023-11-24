@@ -68,7 +68,6 @@ export default ({ mode }) => {
       include: ["tailwind.config.cjs"],
     },
     build: {
-      outDir: "../docs",
       commonjsOptions: {
         include: ["tailwind.config.cjs", "node_modules/**"],
       },
