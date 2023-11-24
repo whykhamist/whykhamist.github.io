@@ -1,0 +1,1 @@
+import{_ as e}from"./error-YM_Airpg.js";import{d as o,e as r}from"./index-X5AUvwv7.js";const _={__name:"403",setup(t){return(a,s)=>(o(),r(e,{code:403,error:"Forbidden!",description:"You do not have permission to access the requested page/data!"}))}};export{_ as default};

@@ -1,0 +1,1 @@
+import{_ as e}from"./error-u5FhjW_Y.js";import{d as o,e as r}from"./index-pkSQlspo.js";const _={__name:"403",setup(t){return(a,s)=>(o(),r(e,{code:403,error:"Forbidden!",description:"You do not have permission to access the requested page/data!"}))}};export{_ as default};

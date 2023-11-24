@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-x3n3nnut.js";import{d as t,m as r,q as s}from"./index-2sZdn9Tb.js";const a={},c={class:"TScroll flex-auto overflow-auto px-3 py-2"};function l(o,n){return t(),r("div",c,[s(o.$slots,"default")])}const _=e(a,[["render",l]]);export{_ as default};

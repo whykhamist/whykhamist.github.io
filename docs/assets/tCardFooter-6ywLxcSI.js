@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-x3n3nnut.js";import{d as o,m as t,q as n}from"./index-2sZdn9Tb.js";const s={},d={class:"min-h-[2rem] shrink-0 grow-0 rounded-b-2xl border-t border-foreground/25 bg-page-background px-3 py-1"};function a(r,c){return o(),t("div",d,[n(r.$slots,"default")])}const l=e(s,[["render",a]]);export{l as default};

@@ -1,0 +1,1 @@
+import{_ as e}from"./error-vMaAJENf.js";import{d as o,e as r}from"./index-2sZdn9Tb.js";const n={__name:"404",setup(t){return(s,a)=>(o(),r(e,{code:404,error:"Not Found!",description:"The page you requested does not exist!"}))}};export{n as default};

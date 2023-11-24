@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-x3n3nnut.js";import{d as t,m as r,q as s}from"./index-2sZdn9Tb.js";const c={},n={class:"layout-footer"};function a(o,_){return t(),r("section",n,[s(o.$slots,"default")])}const d=e(c,[["render",a]]);export{d as default};

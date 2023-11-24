@@ -1,0 +1,1 @@
+import{_ as e}from"./error-vMaAJENf.js";import{d as r,e as o}from"./index-2sZdn9Tb.js";const n={__name:"401",setup(t){return(a,c)=>(r(),o(e,{code:401,error:"Unauthorized!",description:"You are not authorized to view the requested page/data!"}))}};export{n as default};

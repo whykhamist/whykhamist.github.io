@@ -1,0 +1,1 @@
+import{_ as o}from"./_plugin-vue_export-helper-x3n3nnut.js";import{d as t,m as n,q as r}from"./index-2sZdn9Tb.js";const s={},a={class:"layout-page-container"};function c(e,_){return t(),n("section",a,[r(e.$slots,"default")])}const i=o(s,[["render",c]]);export{i as default};

@@ -1,0 +1,1 @@
+import{_ as e}from"./error-u5FhjW_Y.js";import{d as o,e as r}from"./index-pkSQlspo.js";const n={__name:"404",setup(t){return(s,a)=>(o(),r(e,{code:404,error:"Not Found!",description:"The page you requested does not exist!"}))}};export{n as default};

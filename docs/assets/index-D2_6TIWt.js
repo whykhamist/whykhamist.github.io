@@ -1,0 +1,1 @@
+import{_ as o}from"./_plugin-vue_export-helper-x3n3nnut.js";import{b as c,d as t,e as s}from"./index-2sZdn9Tb.js";const n={};function r(a,_){const e=c("Page");return t(),s(e,{class:"flex flex-col items-stretch p-4"})}const m=o(n,[["render",r]]);export{m as default};
