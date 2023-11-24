@@ -86,7 +86,6 @@ import {
 } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useSystemStore } from "@/stores";
-import { useGuard } from "@/plugins/composables";
 import permissions from "@/scripts/json/routePerms.json";
 import LSLayout from "./lockScreenLayout.vue";
 import MainSideBar from "./main/mainSideBar.vue";
@@ -94,57 +93,13 @@ import MinFooter from "./footer/min.vue";
 import TopNav from "./topNav.vue";
 
 const $screen = inject("$screen");
-const $guard = useGuard();
 const $router = useRouter();
 const systemStore = useSystemStore();
 const menu = reactive([
   {
     title: "Main Navigation",
     hidden: false,
-    links: [
-      {
-        to: { name: "settings" },
-        label: "Dashboard",
-        description: "Dashboard",
-        icon: "dashboard",
-        hidden: true,
-      },
-    ],
-  },
-  {
-    title: "Administrative Settings",
-    hidden: computed(
-      () => !(permitted("settings-users") || permitted("settings-roles"))
-    ),
-    links: [
-      {
-        to: { name: "settings-users" },
-        label: "Users",
-        description: "User Management",
-        icon: "manage_accounts",
-        hidden: computed(() => !permitted("settings-users")),
-      },
-      {
-        to: { name: "settings-roles" },
-        label: "User Roles",
-        description: "User Roles Management",
-        icon: "admin_panel_settings",
-        hidden: computed(() => !permitted("settings-roles")),
-      },
-      {
-        to: { name: "settings-permissions" },
-        label: "Permissions",
-        description: "Permissions Management",
-        icon: "security",
-        hidden: computed(() => !permitted("settings-permissions")),
-      },
-      {
-        to: { name: "settings-logs" },
-        label: "Logs",
-        icon: "history",
-        hidden: computed(() => !permitted("settings-logs")),
-      },
-    ],
+    links: [],
   },
 ]);
 
@@ -227,15 +182,6 @@ const onHeaderResize = (size) => {
 const onBodyScroll = (e) => {
   scrollOffset.value = Math.floor(e.target.scrollTop);
   scrolledDown.value = e.target.scrollTop > 57;
-};
-
-const permitted = (routeName, options = {}) => {
-  let perms = $router.resolve(Object.assign({}, { name: routeName }, options))
-    ?.meta?.permissions;
-  if (perms == (null || undefined)) {
-    return true;
-  }
-  return $guard.can(perms);
 };
 
 onMounted(() => {
