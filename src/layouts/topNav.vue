@@ -12,11 +12,11 @@
         <slot name="prepend"></slot>
         <router-link
           :to="{ name: 'HomePage' }"
-          class="inline-flex items-center"
+          class="group inline-flex items-center"
         >
           <TImage
             src="/favicons/baguioseal.svg"
-            class="aspect-square w-12 rounded-full border-light"
+            class="aspect-square w-12 rounded-full border-light transition-all duration-1000 group-hover:rotate-[720deg]"
           />
           <span
             class="flex items-center justify-center p-2 text-lg font-semibold md:text-2xl"
