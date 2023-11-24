@@ -3,7 +3,7 @@
   <div
     v-else
     :style="{
-      background: `url('/src/assets/rick.gif') `,
+      background: `url('./src/assets/rick.gif') `,
       width: '100dvw',
       height: '100dvh',
     }"
