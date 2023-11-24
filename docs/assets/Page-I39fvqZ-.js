@@ -1,1 +1,0 @@
-import{_ as o}from"./_plugin-vue_export-helper-x3n3nnut.js";import{d as t,m as a,q as r}from"./index-pkSQlspo.js";const s={},c={class:"layout-page overflow-auto"};function n(e,l){return t(),a("main",c,[r(e.$slots,"default")])}const m=o(s,[["render",n]]);export{m as default};

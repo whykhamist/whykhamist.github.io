@@ -1,1 +1,0 @@
-import{d as t,e as a,f as o,q as n,z as s}from"./index-X5AUvwv7.js";const c={__name:"tCardHeader",props:{tag:{type:String,default:"div"}},setup(e){return(r,d)=>(t(),a(s(e.tag),{class:"flex min-h-[2rem] shrink-0 grow-0 items-center rounded-t-2xl border-b border-foreground/25 bg-page-background px-3 py-2"},{default:o(()=>[n(r.$slots,"default")]),_:3}))}};export{c as default};

@@ -1,1 +1,0 @@
-import{_ as e}from"./error-vMaAJENf.js";import{d as o,e as r}from"./index-2sZdn9Tb.js";const _={__name:"403",setup(t){return(a,s)=>(o(),r(e,{code:403,error:"Forbidden!",description:"You do not have permission to access the requested page/data!"}))}};export{_ as default};

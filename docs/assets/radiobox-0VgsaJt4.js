@@ -1,1 +1,0 @@
-import{d as s,m as a,s as e}from"./index-pkSQlspo.js";const t={class:"inline-flex w-24 items-center gap-1 rounded-md"},o=e("div",{class:"aspect-square w-5 animate-pulse rounded-full bg-gray-300"},null,-1),n=e("div",{class:"h-3 flex-auto animate-pulse bg-gray-300"},null,-1),c=[o,n],i={__name:"radiobox",props:{},setup(l){return(r,d)=>(s(),a("div",t,c))}};export{i as default};
