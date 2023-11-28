@@ -60,8 +60,8 @@ export default ({ mode }) => {
     server: {
       host: "127.0.0.1",
       https: false,
-      port: 8081,
-      open: "http://127.0.0.1:8081", // opens browser window automatically
+      port: 8084,
+      open: "http://127.0.0.1:8084", // opens browser window automatically
     },
     transpileDependencies: true,
     optimizeDeps: {
