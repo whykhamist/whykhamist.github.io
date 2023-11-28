@@ -1,0 +1,66 @@
+{
+  "folders": [
+    {
+      "path": "./"
+    }
+  ],
+  "settings": {
+    "task.allowAutomaticTasks": "off"
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Start Client",
+        "type": "shell",
+        "command": "yarn serve --port=8084",
+        "windows": {
+          "command": "yarn serve --port=8084"
+        },
+        "group": "none",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "runOptions": {
+          "runOn": "folderOpen"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Preview Build",
+        "type": "shell",
+        "command": "yarn preview",
+        "windows": {
+          "command": "yarn preview"
+        },
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "runOptions": {
+          "runOn": "folderOpen"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Build",
+        "type": "shell",
+        "command": "yarn build",
+        "windows": {
+          "command": "yarn build"
+        },
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "runOptions": {
+          "runOn": "folderOpen"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+}
