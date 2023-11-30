@@ -24,6 +24,14 @@ export default [
             },
           },
           {
+            path: "icon",
+            name: "icon",
+            component: () => import("@/pages/docs/components/icon/index.vue"),
+            meta: {
+              title: "Icons",
+            },
+          },
+          {
             path: "input",
             name: "input",
             component: () => import("@/pages/docs/components/input/index.vue"),
