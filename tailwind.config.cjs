@@ -16,6 +16,16 @@ module.exports = {
       dosis: ["Dosis", "Arial", "sans-serif"],
       times: ["Times New Roman", "Arial", "sans-serif"],
       bernard: ["Bernard MT Condensed"],
+      mono: [
+        "ui-monospace",
+        "SFMono-Regular",
+        "Menlo",
+        "Monaco",
+        "Consolas",
+        "Liberation Mono",
+        "Courier New",
+        "monospace",
+      ],
     },
     extend: {
       animation: animation,
