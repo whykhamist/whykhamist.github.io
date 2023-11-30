@@ -1,0 +1,14 @@
+[
+  {
+    "name": "@click",
+    "type": "(evt) => void",
+    "description": "Emitted when the component is clicked.",
+    "params": [
+      {
+        "name": "evt",
+        "type": "Event",
+        "description": "JS event object;"
+      }
+    ]
+  }
+]

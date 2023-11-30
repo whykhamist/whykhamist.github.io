@@ -1,0 +1,69 @@
+[
+  {
+    "name": "tag",
+    "type": "String",
+    "description": "Element tag to use for rendering the button",
+    "default": "button",
+    "examples": ["a"]
+  },
+  {
+    "name": "label",
+    "type": "String | null",
+    "description": "The text that will be shown on the button"
+  },
+  {
+    "name": "icon",
+    "type": "String | null",
+    "description": "<a href='https://fonts.google.com/icons?icon.style=Outlined&icon.set=Material+Icons' target='_blank' class='text-primary'>Material Icon</a> name to use for the button. Icon is rendered using the <b>\"TIcon\"</b> component and will be placed at the start of the button content."
+  },
+  {
+    "name": "icon-size",
+    "type": "String",
+    "description": "Size of the icon to render.",
+    "default": "md",
+    "examples": ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl"]
+  },
+  {
+    "name": "icon-class",
+    "type": "String | Array",
+    "description": "Class names to apply to the icon component"
+  },
+  {
+    "name": "content-class",
+    "type": "String | Array",
+    "description": "By default, the content of the button is wrapped by a div element. You can add your custom class through this property. This is ignored when using the <b>default slot</b>."
+  },
+  {
+    "name": "focus-class",
+    "type": "String",
+    "description": "The class applied to the <b>FocusHelper</b> component. FocusHelper, as name suggests, gives focus effect when element (in this case, the button) is in focus or is active.",
+    "default": "bg-foreground"
+  },
+  {
+    "name": "focus-disabled",
+    "type": "Boolean",
+    "description": "Disables the FocusHelper",
+    "default": "false"
+  },
+  {
+    "name": "ripple",
+    "type": "Object",
+    "description": "Options used for the ripple directive. <a href=\"/docs/input\" target=\"_blank\"  class='text-primary'>v-ripple</a>. In most cases, you'll only need to modify the color key.",
+    "default": "{<br/>&nbsp;&nbsp;&nbsp;&nbsp;color: \"bg-slate-50\"<br/>&nbsp;&nbsp;&nbsp;&nbsp;animation: \"animate-ripple\"<br/>}",
+    "examples": []
+  },
+  {
+    "name": "disabled",
+    "type": "Boolean",
+    "description": "Disables the button",
+    "default": "false"
+  },
+  {
+    "name": "to",
+    "type": "Object | null",
+    "description": "Converts the button to a \"router-link\" which in turn rendered as an anchor element. Uses object accepted by the \"to\" property of the \"router-link\" component",
+    "examples": [
+      "{<br/>&nbsp;&nbsp;&nbsp;&nbsp;name: \"home\"<br/>&nbsp;&nbsp;&nbsp;&nbsp;params: {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;query: {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page: 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}"
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "name": "name",
+    "type": "String",
+    "description": "Name of the Matrial icon to use."
+  },
+  {
+    "name": "type",
+    "type": "String",
+    "description": "Type of the the icon to render.",
+    "default": "outlined",
+    "examples": ["filled", "outlined", "round", "sharp", "two-tone"]
+  },
+  {
+    "name": "size",
+    "type": "String",
+    "description": "Size of the icon.",
+    "default": "md",
+    "examples": ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl"]
+  }
+]

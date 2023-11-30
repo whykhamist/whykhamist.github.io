@@ -1,33 +1,41 @@
 <template>
-  <div
-    class="relative flex min-h-full max-w-full flex-auto flex-col rounded-2xl"
-  >
-    <div class="p-5 text-7xl font-bold">Button</div>
-    <div class="p-5">
-      <TCard class="h-screen max-h-screen-65 max-w-3xl">
-        <TCardHeader>
-          <TCardTitle class="!text-2xl !font-bold"> Button PROPS </TCardTitle>
-        </TCardHeader>
-        <TCardBody class="divide-y divide-foreground/25 !p-0">
-          <InfoBlock
-            name="label"
-            type="String | null"
-            description="The text that will be shown on the button"
+  <PageBlock title="Button" :properties="ButtonProps" :events="ButtonEvents">
+    <div class="grid gap-5">
+      <div
+        v-if="false"
+        class="max-w-3xl rounded-lg border border-foreground/25 bg-background-accent"
+      >
+        <div class="flex items-center px-3">
+          <div class="flex-auto text-3xl font-bold text-primary">Basic</div>
+        </div>
+        <div class="flex items-center gap-2 p-5">
+          <TButton label="Button 1" class="rounded-md px-3 py-1" />
+          <TButton
+            label="Button 2"
+            class="rounded-md bg-primary px-3 py-1 text-light"
           />
-          <div class="h-screen"></div>
-        </TCardBody>
-        <TCardFooter class="!min-h-[1rem]"> </TCardFooter>
-      </TCard>
-      <div class="text-3xl font-semibold"></div>
-      <div class="px-5"></div>
+          <TButton
+            label="Button 3"
+            class="rounded-md bg-negative px-3 py-1 text-light"
+          />
+          <TButton
+            label="Button 4"
+            class="rounded-md bg-warning px-3 py-1 text-dark"
+          />
+          <TButton
+            label="Button 4"
+            class="rounded-md bg-info px-3 py-1 text-dark"
+          />
+        </div>
+      </div>
     </div>
-  </div>
+  </PageBlock>
 </template>
 
 <script setup>
-import { defineAsyncComponent, ref } from "vue";
+import { computed, defineAsyncComponent, ref } from "vue";
+import ButtonProps from "./props.json";
+import ButtonEvents from "./events.json";
 
-const InfoBlock = defineAsyncComponent(() => import("../infoBlock.vue"));
-
-const disabled = ref(false);
+const PageBlock = defineAsyncComponent(() => import("../pageBlock.vue"));
 </script>
