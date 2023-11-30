@@ -17,8 +17,8 @@
         <div class="text-3xl font-bold text-primary">Size</div>
         <div>
           Icon sizes are derived from existing tailwindcss text sizes and are
-          selected based in accordance with material design icons guidelines.
-          Refer to the size below:
+          selected in accordance with material design icons guidelines. Refer to
+          the size below:
         </div>
         <div>
           <table class="w-full max-w-lg font-mono">
