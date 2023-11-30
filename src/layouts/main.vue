@@ -1,6 +1,6 @@
 <template>
   <LSLayout
-    class="bg-dots !relative"
+    class="!relative"
     :style="{
       paddingTop: systemStore.settings.navbar.fixed
         ? `${headerSize.height}px`
@@ -107,6 +107,10 @@ const menu = reactive([
           {
             label: "Button",
             to: { name: "button" },
+          },
+          {
+            label: "Icons",
+            to: { name: "icon" },
           },
           {
             label: "Input",
