@@ -9,11 +9,7 @@
         @before-leave="transitioning = true"
         @after-enter="transitioning = false"
       >
-        <component
-          :is="Component"
-          class="border border-foreground/10 bg-background/10 backdrop-blur-sm"
-        >
-        </component>
+        <component :is="Component"> </component>
       </transition>
     </router-view>
   </Page>
