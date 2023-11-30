@@ -60,6 +60,7 @@ Router.beforeEach(async (to, from, next) => {
 });
 
 Router.afterEach((to, from) => {
+  document.body.scrollTo({ top: 0, behavior: "smooth" });
   const systemStore = useSystemStore();
   systemStore.setLoading(null);
 });
