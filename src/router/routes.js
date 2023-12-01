@@ -1,7 +1,7 @@
 export default [
   {
     path: "/",
-    component: () => import("@/layouts/main.vue"),
+    component: () => import("@/layouts/public.vue"),
     children: [
       {
         path: "/",
@@ -11,10 +11,24 @@ export default [
           title: import.meta.env.VITE_PRODUCT_NAME,
         },
       },
+    ],
+  },
+  {
+    path: "/",
+    component: () => import("@/layouts/main.vue"),
+    children: [
       {
         path: "/docs",
         component: () => import("@/pages/docs/index.vue"),
         children: [
+          {
+            path: "/docs",
+            name: "components",
+            component: () => import("@/pages/docs/index.vue"),
+            meta: {
+              title: "Components",
+            },
+          },
           {
             path: "button",
             name: "button",
