@@ -9,7 +9,9 @@
     ref="publicLayout"
   >
     <TopNav :layoutRef="publicLayout" @resize="(size) => (headerSize = size)" />
-    <PageContainer>
+    <PageContainer
+      :style="{ maxHeight: `calc(100dvh - ${headerSize.height ?? 0}px)` }"
+    >
       <router-view v-slot="{ Component }">
         <transition
           enter-from-class="opacity-0"
@@ -21,7 +23,10 @@
         </transition>
       </router-view>
     </PageContainer>
-    <Footer class="flex border-t border-foreground/25 bg-page-background p-0">
+    <Footer
+      v-if="false"
+      class="flex border-t border-foreground/25 bg-page-background p-0"
+    >
       <ExpandedFooter />
     </Footer>
     <TScrollUp
