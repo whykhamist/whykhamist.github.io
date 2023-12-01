@@ -22,7 +22,7 @@
     </slot>
     <div class="grid gap-5">
       <div v-if="!!properties" ref="propsCard">
-        <TCard class="max-h-screen-65 max-w-3xl !rounded-md bg-foreground/5">
+        <TCard class="max-h-screen-65 max-w-3xl !rounded-md bg-opacity-25">
           <TCardHeader class="bg-opacity-50">
             <TCardTitle class="!text-2xl !font-bold"> PROPS </TCardTitle>
           </TCardHeader>
@@ -42,7 +42,7 @@
         </TCard>
       </div>
       <div v-if="events" ref="eventsCard">
-        <TCard class="max-h-screen-65 max-w-3xl !rounded-md bg-foreground/5">
+        <TCard class="max-h-screen-65 max-w-3xl !rounded-md bg-opacity-25">
           <TCardHeader class="bg-opacity-50">
             <TCardTitle class="!text-2xl !font-bold"> EVENTS </TCardTitle>
           </TCardHeader>
