@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  VITE_PRODUCT_NAME: "MITD Template Docs"
+  VITE_PRODUCT_NAME: "MITD Web Template Documentation"
   VITE_SHORT_NAME: "MITD Template Docs"
   VITE_DESCRIPTION: "MITD Template Docs"
   VITE_OFFICE_NAME: "City Mayors Office - Management Information Technology Division"
