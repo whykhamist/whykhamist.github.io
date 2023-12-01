@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "name": "modelValue",
+    "type": "String | Number",
+    "description": "Model of the component; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive"
+  },
+  {
+    "name": "maxlength",
+    "type": "Number",
+    "default": 255,
+    "description": "Specifies the maximum number of characters allowed in the input. This can be useful for things like limiting the length of a username or password field."
+  },
+  {
+    "name": "min",
+    "type": "Number",
+    "default": "Undefined",
+    "description": "<span class='px-3 py-1 rounded-md border border-teal-700 bg-teal-700/25 font-semibold'>For type <b>\"number\"</b> only</span> Specifies the minimum value allowed for the numeric input."
+  },
+  {
+    "name": "max",
+    "type": "Number",
+    "default": "Undefined",
+    "description": "<span class='px-3 py-1 rounded-md border border-teal-700 bg-teal-700/25 font-semibold'>For type <b>\"number\"</b> only</span> Specifies the maximum value allowed for the numeric input."
+  },
+  {
+    "name": "type",
+    "type": "String",
+    "default": "text",
+    "examples": ["text", "number", "password", "email"],
+    "description": "Type of input to render."
+  }
+]
