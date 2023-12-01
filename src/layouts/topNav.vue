@@ -1,6 +1,6 @@
 <template>
   <Header
-    class="z-50 flex border-b !border-foreground/25 bg-background bg-opacity-75 p-0 py-1 text-foreground shadow-md backdrop-blur-sm transition-colors duration-1000"
+    class="z-50 flex bg-background bg-opacity-75 p-0 py-1 text-foreground backdrop-blur-sm transition-colors duration-1000"
     :class="[systemStore.settings.navbar.fixed && 'fixed left-0 top-0 z-10']"
     :style="{ right: `${layoutWidthNoScroll}px` }"
   >
@@ -28,17 +28,16 @@
       <nav class="flex h-full items-center justify-center md:justify-end">
         <ul class="flex h-full items-center gap-1 [&>li]:h-full">
           <li>
+            <TButton
+              label="Components"
+              class="my-1 flex h-10 items-center justify-center rounded-lg px-3"
+              :to="{ name: 'components' }"
+            />
+          </li>
+          <li>
             <ThemeToggle
               :label="$md ? 'Theme' : null"
               class="h-10 rounded-lg px-3"
-            />
-          </li>
-          <li v-if="!!systemStore.pin">
-            <TButton
-              icon="lock"
-              :label="$md ? 'Lock Screen' : null"
-              class="my-1 h-10 rounded-lg px-3"
-              @click="systemStore.lock()"
             />
           </li>
           <li>
@@ -84,7 +83,7 @@ const scrollOffset = ref(0);
 const onHeaderResize = (size) => {
   headerSize.value = size;
 
-  let body = document.getElementsByTagName("body")[0];
+  let body = document.body;
   let layout = props.layoutRef?.$el ?? null;
 
   layoutWidthNoScroll.value = body.offsetWidth - (layout?.offsetWidth ?? 0);
