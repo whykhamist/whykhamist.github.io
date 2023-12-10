@@ -22,44 +22,25 @@
     </slot>
     <div class="grid gap-5">
       <div v-if="!!properties" ref="propsCard">
-        <TCard class="max-h-screen-65 max-w-3xl !rounded-md bg-opacity-25">
-          <TCardHeader class="bg-opacity-50">
-            <TCardTitle class="!text-2xl !font-bold"> PROPS </TCardTitle>
-          </TCardHeader>
-          <TCardBody class="divide-y divide-foreground/25 !p-0">
-            <template v-for="prop in properties" :key="prop">
-              <InfoBlock
-                :name="prop.name"
-                :type="prop.type"
-                :description="prop.description"
-                :defaultVal="prop.default"
-                :examples="prop.examples ?? []"
-                :params="prop.params ?? []"
-              />
-            </template>
-          </TCardBody>
-          <TCardFooter class="!min-h-[1rem] bg-opacity-50"> </TCardFooter>
-        </TCard>
+        <InfoCard
+          label="PROPS"
+          :info="properties"
+          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl !rounded-md bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
+        />
       </div>
       <div v-if="events" ref="eventsCard">
-        <TCard class="max-h-screen-65 max-w-3xl !rounded-md bg-opacity-25">
-          <TCardHeader class="bg-opacity-50">
-            <TCardTitle class="!text-2xl !font-bold"> EVENTS </TCardTitle>
-          </TCardHeader>
-          <TCardBody class="divide-y divide-foreground/25 !p-0">
-            <template v-for="evt in events" :key="evt">
-              <InfoBlock
-                :name="evt.name"
-                :type="evt.type"
-                :description="evt.description"
-                :defaultVal="evt.default"
-                :examples="evt.examples ?? []"
-                :params="evt.params ?? []"
-              />
-            </template>
-          </TCardBody>
-          <TCardFooter class="!min-h-[1rem] bg-opacity-50"> </TCardFooter>
-        </TCard>
+        <InfoCard
+          label="EVENTS"
+          :info="events"
+          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl !rounded-md bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
+        />
+      </div>
+      <div v-if="slots" ref="slotsCard">
+        <InfoCard
+          label="SLOTS"
+          :info="slots"
+          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl !rounded-md bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
+        />
       </div>
       <slot> </slot>
     </div>
@@ -71,7 +52,7 @@
 import { computed, defineAsyncComponent, ref } from "vue";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
-const InfoBlock = defineAsyncComponent(() => import("./infoBlock.vue"));
+const InfoCard = defineAsyncComponent(() => import("./infoCard.vue"));
 
 const $screen = useBreakpoints(breakpointsTailwind);
 
@@ -89,10 +70,15 @@ const props = defineProps({
     type: Object,
     default: null,
   },
+  slots: {
+    type: Object,
+    default: null,
+  },
 });
 
 const propsCard = ref(null);
 const eventsCard = ref(null);
+const slotsCard = ref(null);
 
 const contents = computed(() => {
   let _conts = [];
@@ -106,6 +92,12 @@ const contents = computed(() => {
     _conts.push({
       label: "Events",
       el: eventsCard.value,
+    });
+  }
+  if (!!slotsCard.value) {
+    _conts.push({
+      label: "Slots",
+      el: slotsCard.value,
     });
   }
 

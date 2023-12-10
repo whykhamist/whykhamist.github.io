@@ -53,6 +53,24 @@ export default [
               title: "Input",
             },
           },
+          {
+            path: "size-observer",
+            name: "sizeobserver",
+            component: () =>
+              import("@/pages/docs/components/sizeObserver/index.vue"),
+            meta: {
+              title: "Size Observer",
+            },
+          },
+          {
+            path: "field-wrapper",
+            name: "fieldwrapper",
+            component: () =>
+              import("@/pages/docs/components/fieldWrapper/index.vue"),
+            meta: {
+              title: "Field Wrapper",
+            },
+          },
         ],
       },
     ],

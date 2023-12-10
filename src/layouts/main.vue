@@ -113,6 +113,10 @@ const menu = reactive([
             to: { name: "icon" },
           },
           {
+            label: "Field Wrapper",
+            to: { name: "fieldwrapper" },
+          },
+          {
             label: "Input",
             to: { name: "input" },
           },

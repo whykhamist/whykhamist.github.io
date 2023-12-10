@@ -1,12 +1,12 @@
 <template>
   <PageBlock title="Icon" :properties="IconProps" :dir="dirs">
     <template #intro>
-      <div class="max-w-3xl px-3 py-1 text-lg font-semibold">
+      <div class="max-w-3xl px-3 py-1 text-lg">
         A component to render Google's
         <a
           href="https://fonts.google.com/icons?icon.style=Outlined&icon.set=Material+Icons"
           target="_blank"
-          class="text-primary"
+          class="text-primary hover:underline"
         >
           Matrial Icons
         </a>
@@ -20,7 +20,13 @@
           selected in accordance with material design icons guidelines. Refer to
           the size below:
         </div>
-        <div>
+        <div class="border border-warning bg-warning/25 px-3">
+          <span class="font-semibold">Note!</span> Line height is ignored in all
+          sizes. The icon will have a classname of "!leading-none" which sets
+          line height to 1. This is to avoid any additional spaces at the top
+          and bottom of the icon.
+        </div>
+        <div class="">
           <table class="w-full max-w-lg font-mono">
             <thead class="[&>tr>th]:text-start">
               <tr class="border-b-2 border-foreground/25 text-lg">
@@ -32,78 +38,15 @@
             <tbody
               class="divide-y divide-foreground/25 [&>tr>*:nth-child(2)]:text-orange-800 dark:[&>tr>*:nth-child(2)]:text-orange-400 last:[&>tr>td]:py-2"
             >
-              <tr>
-                <td>xs</td>
-                <td>text-sm</td>
-                <td>
-                  <CssBlock label="font-size" val="0.875rem" comment="14px" />
-                  <CssBlock label="line-height" val="1.25rem" comment="20px" />
-                </td>
-              </tr>
-              <tr>
-                <td>sm</td>
-                <td>text-lg</td>
-                <td>
-                  <CssBlock label="font-size" val="1.125rem" comment="18px" />
-                  <CssBlock label="line-height" val="1.75rem" comment="28px" />
-                </td>
-              </tr>
-              <tr>
-                <td>md</td>
-                <td>text-2xl</td>
-                <td>
-                  <CssBlock label="font-size" val="1.5rem" comment="24px" />
-                  <CssBlock label="line-height" val="2rem" comment="32px" />
-                </td>
-              </tr>
-              <tr>
-                <td>lg</td>
-                <td>text-4xl</td>
-                <td>
-                  <CssBlock label="font-size" val="2.25rem" comment="36px" />
-                  <CssBlock label="line-height" val="2.5rem" comment="40px" />
-                </td>
-              </tr>
-              <tr>
-                <td>xl</td>
-                <td>text-5xl</td>
-                <td>
-                  <CssBlock label="font-size" val="3rem" comment="48px" />
-                  <CssBlock label="line-height" val="1" />
-                </td>
-              </tr>
-              <tr>
-                <td>2xl</td>
-                <td>text-6xl</td>
-                <td>
-                  <CssBlock label="font-size" val="3.75rem" comment="60px" />
-                  <CssBlock label="line-height" val="1" />
-                </td>
-              </tr>
-              <tr>
-                <td>3xl</td>
-                <td>text-7xl</td>
-                <td>
-                  <CssBlock label="font-size" val="4.5rem" comment="72px" />
-                  <CssBlock label="line-height" val="1" />
-                </td>
-              </tr>
-              <tr>
-                <td>4xl</td>
-                <td>text-8xl</td>
-                <td>
-                  <CssBlock label="font-size" val="6rem" comment="96px" />
-                  <CssBlock label="line-height" val="1" />
-                </td>
-              </tr>
-              <tr>
-                <td>5xl</td>
-                <td>text-9xl</td>
-                <td>
-                  <CssBlock label="font-size" val="8rem" comment="128px" />
-                  <CssBlock label="line-height" val="1" />
-                </td>
-              </tr>
+              <template v-for="s in sizes" :key="s.size">
+                <tr>
+                  <td>{{ s.size }}</td>
+                  <td>{{ s.tw }}</td>
+                  <td>
+                    <CodeBlock :code="s.css" class="px-3 py-1 text-sm" />
+                  </td>
+                </tr>
+              </template>
             </tbody>
           </table>
         </div>
@@ -116,8 +59,13 @@
 import { computed, defineAsyncComponent, ref } from "vue";
 import IconProps from "./props.json";
 
-const PageBlock = defineAsyncComponent(() => import("../pageBlock.vue"));
+const PageBlock = defineAsyncComponent(() =>
+  import("../../utils/pageBlock.vue")
+);
 const CssBlock = defineAsyncComponent(() => import("./css.vue"));
+const CodeBlock = defineAsyncComponent(() =>
+  import("../../utils/codeBlock.vue")
+);
 
 const sizeSect = ref(null);
 
@@ -127,4 +75,52 @@ const dirs = computed(() => [
     el: sizeSect.value,
   },
 ]);
+
+const sizes = [
+  {
+    size: "xs",
+    tw: "text-sm",
+    css: "font-size: 0.875rem /* 14px */;\nline-height: 1.25rem /* 20px */;",
+  },
+  {
+    size: "sm",
+    tw: "text-lg",
+    css: "font-size: 1.125rem /* 18px */;\nline-height: 1.75rem /* 28px */;",
+  },
+  {
+    size: "md",
+    tw: "text-2xl",
+    css: "font-size: 1.5rem /* 24px */;\nline-height: 2rem /* 32px */;",
+  },
+  {
+    size: "lg",
+    tw: "text-4xl",
+    css: "font-size: 2.25rem /* 36px */;\nline-height: 2.5rem /* 40px */;",
+  },
+  {
+    size: "xl",
+    tw: "text-5xl",
+    css: "font-size: 3rem /* 48px */;\nline-height: 1;",
+  },
+  {
+    size: "2xl",
+    tw: "text-6xl",
+    css: "font-size: 3.75rem /* 60px */;\nline-height: 1;",
+  },
+  {
+    size: "3xl",
+    tw: "text-7xl",
+    css: "font-size: 4.5rem /* 72px */;\nline-height: 1;",
+  },
+  {
+    size: "4xl",
+    tw: "text-8xl",
+    css: "font-size: 6rem /* 96px */;\nline-height: 1;",
+  },
+  {
+    size: "5xl",
+    tw: "text-9xl",
+    css: "font-size: 8rem /* 128px */;\nline-height: 1;",
+  },
+];
 </script>

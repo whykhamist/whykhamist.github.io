@@ -42,6 +42,7 @@
           </li>
           <li>
             <TButton
+              v-if="route.name != 'HomePage'"
               :icon="
                 systemStore.settings.navbar.fixed ? 'toggle_on' : 'toggle_off'
               "

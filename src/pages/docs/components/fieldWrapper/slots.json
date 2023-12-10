@@ -1,0 +1,126 @@
+[
+  {
+    "name": "default",
+    "description": "Main content. Use to replace the input field element. (It is recommended to use <span class='font-bold'>\"TFieldWrapper\"</span> instead.)",
+    "scopes": [
+      {
+        "name": "attr",
+        "type": "Object",
+        "description": [
+          {
+            "type": "text",
+            "content": "Required attributes to bind to the input element."
+          },
+          {
+            "type": "code",
+            "content": "{\n  id: '...', // unique id used for the input element.\n  placeholder: '...', // String to use as plceholer. This should always be an empty string. This is is only used to check if state of placeholder visibility.\n  aria-label: '...', // Label for accessibility.\n  readonly: '...', //Boolean. Indicates readonly element.\n  disabled: '...', //Boolean, Indicates disabled element.\n}"
+          }
+        ],
+        "descHTML": ""
+      },
+      {
+        "name": "classNames",
+        "type": "Array",
+        "description": "Array of default class names used for the input element"
+      },
+      {
+        "name": "error",
+        "type": "Boolean",
+        "description": "Passes the error prop value."
+      }
+    ]
+  },
+  {
+    "name": "prepend",
+    "description": "Prepend element inside the border of the input field.",
+    "scopes": [
+      {
+        "name": "error",
+        "type": "Boolean",
+        "description": "Passes the error prop value."
+      }
+    ]
+  },
+  {
+    "name": "append",
+    "description": "Append element inside the the border of the input field.",
+    "scopes": [
+      {
+        "name": "error",
+        "type": "Boolean",
+        "description": "Passes the error prop value."
+      }
+    ]
+  },
+  {
+    "name": "before",
+    "description": "Add element before the input field, outside the border.",
+    "scopes": [
+      {
+        "name": "error",
+        "type": "Boolean",
+        "description": "Passes the error prop value."
+      }
+    ]
+  },
+  {
+    "name": "after",
+    "description": "Add element after the input field, outside the border.",
+    "scopes": [
+      {
+        "name": "error",
+        "type": "Boolean",
+        "description": "Passes the error prop value."
+      }
+    ]
+  },
+  {
+    "name": "label",
+    "description": "Use for custom label. Ignores label props.",
+    "scopes": [
+      {
+        "name": "error",
+        "type": "Boolean",
+        "description": "Passes the error prop value."
+      }
+    ]
+  },
+  {
+    "name": "error",
+    "description": "Similar with append slot but will only render when error prop is true.",
+    "scopes": [
+      {
+        "name": "error",
+        "type": "Boolean",
+        "description": "Passes the error prop value."
+      }
+    ]
+  },
+  {
+    "name": "errorMessage",
+    "description": "Add custom element for error message. This will replace the hint prop/slot if error is true.",
+    "scopes": [
+      {
+        "name": "error",
+        "type": "Boolean",
+        "description": "Passes the error prop value."
+      },
+      {
+        "name": "errorMessage",
+        "type": "String",
+        "description": "Passes the error-message prop value"
+      }
+    ]
+  },
+  {
+    "name": "hint",
+    "description": "Adds hint at the bottom of the component.",
+    "scopes": [
+      {
+        "name": "hint",
+        "type": "String",
+        "description": "Passes the hint prop value."
+      }
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "@update:modelValue",
+    "type": "(value) => void",
+    "description": "Emitted when the component needs to change the model; Is also used by v-model",
+    "params": [
+      {
+        "name": "value",
+        "type": "String | Number | null",
+        "description": "Model value"
+      }
+    ]
+  },
+  {
+    "name": "@paste",
+    "type": "(event) => void",
+    "description": "<span class='px-3 py-1 rounded-md border border-teal-700 bg-teal-700/25 font-semibold'>For type <b>\"number\"</b> only</span> Emitted when data is pasted to the component.",
+    "params": [
+      {
+        "name": "event",
+        "type": "ClipboardEvent",
+        "description": "The ClipboardEvent interface represents events providing information related to modification of the clipboard, that is cut, copy, and paste events."
+      }
+    ]
+  }
+]

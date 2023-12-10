@@ -1,0 +1,66 @@
+<template>
+  <TCard
+    class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl !rounded-md bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
+  >
+    <TCardHeader class="bg-opacity-50">
+      <TCardTitle class="!text-2xl !font-bold"> {{ label }} </TCardTitle>
+      <TInput
+        v-model="search"
+        label="Search"
+        innerClass="border-none shadow-none !outline-none"
+        clearable
+      >
+        <template #prepend>
+          <TIcon name="search" />
+        </template>
+        <template #append>
+          <TButton
+            v-if="!!search"
+            icon="close"
+            iconSize="sm"
+            class="rounded-full p-0.5"
+            @click="search = ''"
+          />
+        </template>
+      </TInput>
+    </TCardHeader>
+    <TCardBody class="divide-y divide-foreground/25 !p-0">
+      <template v-if="filtered.length <= 0">
+        <div class="text-center text-sm font-semibold italic text-gray-400">
+          No result!
+        </div>
+      </template>
+      <template v-for="inf in filtered" :key="inf">
+        <InfoBlock
+          :name="inf.name"
+          :type="inf.type"
+          :description="inf.description"
+          :defaultVal="inf.default"
+          :examples="inf.examples ?? []"
+          :params="inf.params ?? []"
+          :scopes="inf.scopes ?? []"
+        />
+      </template>
+    </TCardBody>
+    <TCardFooter class="!min-h-[1rem] bg-opacity-50"> </TCardFooter>
+  </TCard>
+</template>
+
+<script setup>
+import { computed, defineAsyncComponent, ref } from "vue";
+
+const InfoBlock = defineAsyncComponent(() => import("./infoBlock.vue"));
+
+const props = defineProps({
+  label: String,
+  info: Object,
+});
+
+const search = ref("");
+
+const filtered = computed(() =>
+  search.value == ""
+    ? props.info
+    : props.info.filter((item) => item.name.includes(search.value))
+);
+</script>

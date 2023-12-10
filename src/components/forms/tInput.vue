@@ -31,7 +31,7 @@
         v-bind="Object.assign({}, attr, inputAttr)"
         v-on="inputEvents"
         :name="name"
-        :class="[...classNames, ...inputClass]"
+        :class="[...classNames, ..._inputClass]"
         class="h-[22px]"
         :maxlength="maxlength"
         @keypress="onKeyPress"
@@ -69,8 +69,8 @@ const props = defineProps({
     default: "text",
   },
   inputClass: {
-    type: Array,
-    default: () => [],
+    type: [Object, String],
+    default: "",
   },
   hideNumberButtons: {
     type: Boolean,
@@ -79,7 +79,66 @@ const props = defineProps({
   autocomplete: {
     type: String,
     default: "on",
-    validator: (val) => ["on", "off"].indexOf(val) > -1,
+    validator: (val) =>
+      [
+        "on",
+        "off",
+        "name",
+        "honorific-prefix",
+        "given-name",
+        "additional-name",
+        "family-name",
+        "honorific-suffix",
+        "nickname",
+        "email",
+        "username",
+        "new-password",
+        "current-password",
+        "one-time-code",
+        "organization-title",
+        "organization",
+        "street-address",
+        "shipping",
+        "billing",
+        "address-line1",
+        "address-line2",
+        "address-line3",
+        "address-level4",
+        "address-level3",
+        "address-level2",
+        "address-level1",
+        "country",
+        "country-name",
+        "postal-code",
+        "cc-name",
+        "cc-given-name",
+        "cc-additional-name",
+        "cc-family-name",
+        "cc-number",
+        "cc-exp",
+        "cc-exp-month",
+        "cc-exp-year",
+        "cc-csc",
+        "cc-type",
+        "transaction-currency",
+        "transaction-amount",
+        "language",
+        "bday",
+        "bday-day",
+        "bday-month",
+        "bday-year",
+        "sex",
+        "tel",
+        "tel-country-code",
+        "tel-national",
+        "tel-area-code",
+        "tel-local",
+        "tel-extension",
+        "impp",
+        "url",
+        "photo",
+        "webauthn",
+      ].indexOf(val) > -1,
   },
   autocorrect: {
     type: String,
@@ -121,9 +180,7 @@ const inputAttr = computed(() => {
 
 const inputEvents = computed(() => {
   let evt = {};
-  if (props.type == "number") {
-    Object.assign(evt, { paste: onPaste });
-  }
+  Object.assign(evt, { paste: onPaste });
   return evt;
 });
 
@@ -141,6 +198,10 @@ const events = computed(() => {
   }
   return evts;
 });
+
+const _inputClass = computed(() =>
+  Array.isArray(props.inputClass) ? props.inputClass : [props.inputClass]
+);
 
 const onPaste = (evt) => {
   if (evt.type == "paste") {

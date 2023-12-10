@@ -2,24 +2,22 @@
   {
     "name": "modelValue",
     "type": "String | Number",
-    "description": "Model of the component; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive"
+    "description": "Model of the component; Either use this property <b>(along with a listener for 'update:modelValue' event)</b> OR use v-model directive"
   },
   {
     "name": "maxlength",
     "type": "Number",
-    "default": 255,
+    "default": "255",
     "description": "Specifies the maximum number of characters allowed in the input. This can be useful for things like limiting the length of a username or password field."
   },
   {
     "name": "min",
-    "type": "Number",
-    "default": "Undefined",
+    "type": "Number | undefined",
     "description": "<span class='px-3 py-1 rounded-md border border-teal-700 bg-teal-700/25 font-semibold'>For type <b>\"number\"</b> only</span> Specifies the minimum value allowed for the numeric input."
   },
   {
     "name": "max",
-    "type": "Number",
-    "default": "Undefined",
+    "type": "Number | undefined",
     "description": "<span class='px-3 py-1 rounded-md border border-teal-700 bg-teal-700/25 font-semibold'>For type <b>\"number\"</b> only</span> Specifies the maximum value allowed for the numeric input."
   },
   {
@@ -28,5 +26,95 @@
     "default": "text",
     "examples": ["text", "number", "password", "email"],
     "description": "Type of input to render."
+  },
+  {
+    "name": "input-class",
+    "type": "String | Array",
+    "description": "The input element is wrapped inside the <b>\"TFieldWrapper\"</b>. You can use this to add classes directly to the input element."
+  },
+  {
+    "name": "hide-number-buttons",
+    "type": "Boolean",
+    "default": "false",
+    "description": "<span class='px-3 py-1 rounded-md border border-teal-700 bg-teal-700/25 font-semibold'>For type <b>\"number\"</b> only</span> Hides increment and decrement buttons for numeric input"
+  },
+  {
+    "name": "autocomplete",
+    "type": "String",
+    "default": "on",
+    "description": "This attribute specifies if browsers should try to predict the value of an input field or not. You can also specify which type of value you expect in the input field.<br/><br/><div class='px-3 bg-warning/25 border border-warning/25'><b>Note!</b> <a href='https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete' target='_blank' class='text-primary hover:underline'>Refer to this link for more info.</a></div>",
+    "examples": [
+      "on",
+      "off",
+      "name",
+      "honorific-prefix",
+      "given-name",
+      "additional-name",
+      "family-name",
+      "honorific-suffix",
+      "nickname",
+      "email",
+      "username",
+      "new-password",
+      "current-password",
+      "one-time-code",
+      "organization-title",
+      "organization",
+      "street-address",
+      "shipping",
+      "billing",
+      "address-line1",
+      "address-line2",
+      "address-line3",
+      "address-level4",
+      "address-level3",
+      "address-level2",
+      "address-level1",
+      "country",
+      "country-name",
+      "postal-code",
+      "cc-name",
+      "cc-given-name",
+      "cc-additional-name",
+      "cc-family-name",
+      "cc-number",
+      "cc-exp",
+      "cc-exp-month",
+      "cc-exp-year",
+      "cc-csc",
+      "cc-type",
+      "transaction-currency",
+      "transaction-amount",
+      "language",
+      "bday",
+      "bday-day",
+      "bday-month",
+      "bday-year",
+      "sex",
+      "tel",
+      "tel-country-code",
+      "tel-national",
+      "tel-area-code",
+      "tel-local",
+      "tel-extension",
+      "impp",
+      "url",
+      "photo",
+      "webauthn"
+    ]
+  },
+  {
+    "name": "autocorrect",
+    "type": "String",
+    "default": "on",
+    "examples": ["on", "off"],
+    "description": "A string indicating whether autocorrect is on or off. <b>Safari only</b>."
+  },
+  {
+    "name": "autocapitalize",
+    "type": "String",
+    "default": "sentences",
+    "examples": ["off | none", "on | sentences", "words", "characters"],
+    "description": "This attribute is used to define whether the text present inside the HTML element should be automatically capitalized or not"
   }
 ]

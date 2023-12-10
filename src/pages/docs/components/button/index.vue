@@ -37,5 +37,7 @@ import { computed, defineAsyncComponent, ref } from "vue";
 import ButtonProps from "./props.json";
 import ButtonEvents from "./events.json";
 
-const PageBlock = defineAsyncComponent(() => import("../pageBlock.vue"));
+const PageBlock = defineAsyncComponent(() =>
+  import("../../utils/pageBlock.vue")
+);
 </script>

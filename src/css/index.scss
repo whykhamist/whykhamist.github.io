@@ -9,3 +9,12 @@
 
 @use "./app.scss";
 @use "./components/index.scss" as componentStyle;
+
+@use "sass:meta";
+
+html {
+  @include meta.load-css("highlight.js/styles/stackoverflow-light");
+}
+html[class="dark"] {
+  @include meta.load-css("highlight.js/styles/stackoverflow-dark");
+}

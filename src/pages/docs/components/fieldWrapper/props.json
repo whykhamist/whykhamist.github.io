@@ -1,0 +1,75 @@
+[
+  {
+    "name": "tag",
+    "type": "String",
+    "default": "label",
+    "description": "The element tag that wraps the entire component. We use label by default to pass all focus to the input element."
+  },
+  {
+    "name": "id",
+    "type": "String | null",
+    "description": "Unique id to use for the input element. This will also bind to the <b>\"for\"</b> attribute of the label element wrapping the component.<br/><br/><div class='px-3 bg-warning/25 rounded-md border border-warning'><b>Note!</b> The <b>\"TFieldWrapper\"</b> will auto generate this if set to null.</div>"
+  },
+  {
+    "name": "label",
+    "type": "String | null",
+    "description": "Displayed name for the component."
+  },
+  {
+    "name": "readonly",
+    "type": "Boolean",
+    "default": "false",
+    "description": "Sets the input field to be readonly."
+  },
+  {
+    "name": "disabled",
+    "type": "Boolean",
+    "default": "false",
+    "description": "Sets the input field to be disabled."
+  },
+  {
+    "name": "hint",
+    "type": "String | null",
+    "description": "Adds text at the bottom of the component. Usually used to give <b>hint</b> or clue on what the user can enter."
+  },
+  {
+    "name": "error",
+    "type": "Boolean | null",
+    "default": "null",
+    "description": "Indicates error for the component. <br/><br/><div class='px-3 bg-warning/25 border border-warning'><b>Note!</b> This attribute adds a margin at the bottom <b>(mb-5)</b> of the wrapper element to give space for the error message. If set to null, the added margin will be removed.</div>"
+  },
+  {
+    "name": "error-message",
+    "type": "String | null",
+    "description": "The message displayed when an error occurs."
+  },
+  {
+    "name": "cursor",
+    "type": "String",
+    "default": "cursor-text",
+    "description": "Mouse cursor to use on hover for the component. Supports any class names by tailwind for cursors."
+  },
+  {
+    "name": "onResize",
+    "type": "Function | null",
+    "default": "null",
+    "description": "Function called whenever the component size changes. <br/><br/><div class='bg-warning/25 border border-warning rounded-md px-3'>This uses the <a href='/docs/size-observer' target='_blank' class='font-bold hover:underline'>\"SizeObserver\"</a> component to get the component size.</div>"
+  },
+  {
+    "name": "inner-class",
+    "type": "Array | String",
+    "default": "focus-within:bg-light focus-within:text-dark text-foreground focus-within:duration-700 !shadow-none",
+    "description": "Add class names to the inner wrapper of the component.",
+    "examples": ["bg-light text-dark"]
+  },
+  {
+    "name": "inner-style",
+    "type": "Object | String",
+    "description": "Add css styles to the inner wrapper of the component."
+  },
+  {
+    "name": "hint-class",
+    "type": "Array | String",
+    "description": "Add class names to the hint container. Ignored when using the hint slot."
+  }
+]

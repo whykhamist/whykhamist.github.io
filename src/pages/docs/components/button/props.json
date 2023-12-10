@@ -49,7 +49,7 @@
     "name": "ripple",
     "type": "Object",
     "description": "Options used for the ripple directive. <a href=\"/docs/input\" target=\"_blank\"  class='text-primary'>v-ripple</a>. In most cases, you'll only need to modify the color key.",
-    "default": "{<br/>&nbsp;&nbsp;&nbsp;&nbsp;color: \"bg-slate-50\"<br/>&nbsp;&nbsp;&nbsp;&nbsp;animation: \"animate-ripple\"<br/>}",
+    "default": "{\n  color: \"bg-slate-50\",\n  animation: \"animate-ripple\"\n}",
     "examples": []
   },
   {
@@ -63,7 +63,7 @@
     "type": "Object | null",
     "description": "Converts the button to a \"router-link\" which in turn rendered as an anchor element. Uses object accepted by the \"to\" property of the \"router-link\" component",
     "examples": [
-      "{<br/>&nbsp;&nbsp;&nbsp;&nbsp;name: \"home\"<br/>&nbsp;&nbsp;&nbsp;&nbsp;params: {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;query: {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page: 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}"
+      "{\n  name: \"home\",\n  params: {\n    id: 1\n  },\n  query: {\n    page: 1\n  }\n}"
     ]
   }
 ]
