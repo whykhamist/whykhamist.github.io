@@ -17,7 +17,7 @@ export default ({ mode }) => {
         registerType: "autoUpdate",
         injectRegister: "auto",
         devOptions: {
-          enabled: false,
+          enabled: true,
         },
         workbox: {
           disableDevLogs: true,
