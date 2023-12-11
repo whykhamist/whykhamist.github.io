@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    class="__card_header__ flex min-h-[2rem] shrink-0 grow-0 items-center border-b border-foreground/25 bg-page-background px-3 py-2"
+    class="flex min-h-[2rem] shrink-0 grow-0 items-center border-b border-foreground/25 bg-page-background px-3 py-2"
   >
     <slot></slot>
   </component>
