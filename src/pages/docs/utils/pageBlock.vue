@@ -25,21 +25,21 @@
         <InfoCard
           label="PROPS"
           :info="properties"
-          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl !rounded-md bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
+          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
         />
       </div>
       <div v-if="events" ref="eventsCard">
         <InfoCard
           label="EVENTS"
           :info="events"
-          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl !rounded-md bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
+          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
         />
       </div>
       <div v-if="slots" ref="slotsCard">
         <InfoCard
           label="SLOTS"
           :info="slots"
-          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl !rounded-md bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
+          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
         />
       </div>
       <slot> </slot>
