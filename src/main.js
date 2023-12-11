@@ -17,6 +17,7 @@ import HackedText from "./plugins/directives/hackedText";
 import PWAInstallPrompt from "@/plugins/pwaInstallPrompt";
 import DevDetect from "@/plugins/devdetect";
 import Themed from "@/plugins/themed";
+import SWRegister from "@/plugins/swRegister";
 
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
@@ -37,6 +38,7 @@ async function init() {
   app.use(pinia);
   app.use(Notifications);
   app.use(VueApexCharts);
+  app.use(SWRegister);
 
   app.use(PWAInstallPrompt);
   app.use(DevDetect, {
