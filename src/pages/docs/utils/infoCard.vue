@@ -1,7 +1,5 @@
 <template>
-  <TCard
-    class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl !rounded-md bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
-  >
+  <TCard class="relative border-4">
     <TCardHeader class="bg-opacity-50">
       <TCardTitle class="!text-2xl !font-bold"> {{ label }} </TCardTitle>
       <TInput
@@ -42,7 +40,7 @@
         />
       </template>
     </TCardBody>
-    <TCardFooter class="!min-h-[1rem] bg-opacity-50"> </TCardFooter>
+    <TInnerLoading :active="false" />
   </TCard>
 </template>
 
@@ -57,6 +55,7 @@ const props = defineProps({
 });
 
 const search = ref("");
+const imageURL = new URL("@/assets/bg.jpg", import.meta.url).href;
 
 const filtered = computed(() =>
   search.value == ""
