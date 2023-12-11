@@ -13,9 +13,9 @@
       {
         "label": "Start Client",
         "type": "shell",
-        "command": "yarn serve --port=8084",
+        "command": "npm run serve --port=8084",
         "windows": {
-          "command": "yarn serve --port=8084"
+          "command": "npm run serve --port=8084"
         },
         "group": "none",
         "presentation": {
@@ -30,9 +30,9 @@
       {
         "label": "Preview Build",
         "type": "shell",
-        "command": "yarn preview",
+        "command": "npm run preview",
         "windows": {
-          "command": "yarn preview"
+          "command": "npm run preview"
         },
         "group": "build",
         "presentation": {
@@ -47,9 +47,9 @@
       {
         "label": "Build",
         "type": "shell",
-        "command": "yarn build",
+        "command": "npm run build",
         "windows": {
-          "command": "yarn build"
+          "command": "npm run build"
         },
         "group": "build",
         "presentation": {
