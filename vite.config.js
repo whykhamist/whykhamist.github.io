@@ -14,13 +14,15 @@ export default ({ mode }) => {
     plugins: [
       vue(),
       VitePWA({
-        registerType: "autoUpdate",
+        registerType: "prompt",
         injectRegister: "auto",
         devOptions: {
           enabled: true,
+          type: "module",
         },
         workbox: {
           disableDevLogs: true,
+          sourcemap: true,
           globPatterns: ["**/*.{js,css,html,ico,png,svg,vue,woff,woff2}"],
         },
         includeAssets: [

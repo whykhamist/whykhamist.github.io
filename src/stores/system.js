@@ -15,7 +15,15 @@ export const useSystemStore = defineStore("system", {
       },
       pwa: {
         doNotShow: false,
+        offline: {
+          ready: false,
+          confirm: false,
+        },
       },
+    },
+
+    connectivity: {
+      online: true,
     },
 
     lockScreen: {

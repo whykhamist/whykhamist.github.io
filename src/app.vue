@@ -88,14 +88,23 @@
       <DevtBlocked message="You are NOT ALLOWED to view source!" />
     </teleport>
     <InstallPrompt />
+    <OfflineReadyPrompt />
+    <Refresher />
   </template>
 </template>
 
 <script setup>
-import { computed, inject } from "vue";
+import { computed, defineAsyncComponent, inject } from "vue";
 import InstallPrompt from "@/components/others/pwaInstallPrompt.vue";
 import DevtBlocked from "@/components/others/devtBlocked.vue";
 const devt = inject("devt");
+
+const OfflineReadyPrompt = defineAsyncComponent(() =>
+  import("@/plugins/pwa/OfflineReadyPrompt.vue")
+);
+const Refresher = defineAsyncComponent(() =>
+  import("@/plugins/pwa/refreshPrompt.vue")
+);
 
 const imageURL = new URL("@/assets/rick.gif", import.meta.url).href;
 const style = computed(() => ({

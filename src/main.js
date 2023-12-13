@@ -18,6 +18,7 @@ import PWAInstallPrompt from "@/plugins/pwaInstallPrompt";
 import DevDetect from "@/plugins/devdetect";
 import Themed from "@/plugins/themed";
 import SWRegister from "@/plugins/swRegister";
+import Connectivity from "@/plugins/connectivity";
 
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
@@ -46,6 +47,7 @@ async function init() {
     wagmongsubukan: import.meta.env.VITE_DEV_TOOLS == "true",
   });
   app.use(Themed);
+  app.use(Connectivity);
 
   app.directive("ripple", TRipple);
   app.directive("trapFocus", TrapFocus);
