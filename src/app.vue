@@ -100,7 +100,7 @@ import DevtBlocked from "@/components/others/devtBlocked.vue";
 const devt = inject("devt");
 
 const OfflineReadyPrompt = defineAsyncComponent(() =>
-  import("@/plugins/pwa/OfflineReadyPrompt.vue")
+  import("@/plugins/pwa/offlineReadyPrompt.vue")
 );
 const Refresher = defineAsyncComponent(() =>
   import("@/plugins/pwa/refreshPrompt.vue")
