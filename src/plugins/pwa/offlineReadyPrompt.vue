@@ -7,14 +7,26 @@
       leave-active-class="transition duration-300"
     >
       <div
-        v-if="offlinePWA.ready && offlinePWA.confirm"
+        v-if="!offlinePWA.ready"
+        class="fixed bottom-20 right-2 flex aspect-square w-8 items-center justify-center rounded-full border-2 border-gray-400 bg-black shadow-md shadow-foreground/25"
+      >
+        <TIcon name="motion_photos_on" class="animate-spin text-green-700" />
+        <TToolTip
+          class="w-screen max-w-[16rem] border border-gray-400 bg-black font-semibold text-white"
+          position="left"
+        >
+          Loading assets/modules for offline support.
+        </TToolTip>
+      </div>
+      <div
+        v-else-if="offlinePWA.ready && offlinePWA.confirm"
         class="fixed bottom-20 right-2"
       >
         <TButton
           :icon="isOnline ? 'wifi' : 'wifi_off'"
           class="aspect-square w-8 rounded-full border-2 border-gray-400 bg-black shadow-md shadow-foreground/25"
           :class="{
-            'text-sky-500': isOnline,
+            'text-sky-500': offlinePWA.ready && isOnline,
             'text-gray-500': !isOnline,
           }"
           @click="offlinePWA.confirm = !offlinePWA.confirm"
@@ -22,7 +34,7 @@
       </div>
       <div
         v-else-if="offlinePWA.ready && !offlinePWA.confirm"
-        class="fixed bottom-14 right-12 z-[9997] rounded-xl border-4 border-gray-400 bg-black px-3 py-2 text-white shadow-md shadow-foreground/25 transition-all"
+        class="fixed bottom-14 right-2 z-[9997] rounded-xl border-4 border-gray-400 bg-black px-3 py-2 text-white shadow-md shadow-foreground/25 transition-all"
       >
         <div class="font-bold">Offline Ready!</div>
         <div class="text-sm">This site is ready for offline use!</div>
