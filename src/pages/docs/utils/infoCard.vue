@@ -55,7 +55,6 @@ const props = defineProps({
 });
 
 const search = ref("");
-const imageURL = new URL("@/assets/bg.jpg", import.meta.url).href;
 
 const filtered = computed(() =>
   search.value == ""
