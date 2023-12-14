@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="group/main mx-2 mb-2 flex flex-shrink-0 flex-grow-0 basis-auto flex-col rounded-2xl border border-foreground/50 bg-background bg-opacity-75 text-foreground shadow-md backdrop-blur-sm transition-all duration-75"
+    class="group/main mx-2 mb-2 flex flex-shrink-0 flex-grow-0 basis-auto flex-col bg-background bg-opacity-75 text-foreground backdrop-blur-sm transition-all duration-75"
     :class="[isCollpsed && 'w-12', !isCollpsed && 'w-64']"
     ref="sbar"
   >
