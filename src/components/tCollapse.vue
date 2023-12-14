@@ -7,7 +7,7 @@
     ref="container"
   >
     <div
-      class="row-[1_/_span_2] select-text"
+      class="row-[1_/_span_2] select-text overflow-auto"
       :class="{
         'overflow-hidden': !open || transitioning,
       }"
