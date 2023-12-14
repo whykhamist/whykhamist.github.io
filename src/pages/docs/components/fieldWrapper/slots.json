@@ -1,7 +1,7 @@
 [
   {
     "name": "default",
-    "description": "Main content. Use to replace the input field element. (It is recommended to use <span class='font-bold'>\"TFieldWrapper\"</span> instead.)",
+    "description": "Main content.",
     "scopes": [
       {
         "name": "attr",
