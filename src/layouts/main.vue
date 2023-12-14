@@ -70,7 +70,7 @@
         @redirect="_showMenu = false"
         :collapsed="false"
         hideCollapse
-        class="h-full"
+        class="h-full rounded-lg"
       />
     </TDialog>
   </LSLayout>
@@ -119,6 +119,10 @@ const menu = reactive([
           {
             label: "Input",
             to: { name: "input" },
+          },
+          {
+            label: "Size Observer",
+            to: { name: "sizeobserver" },
           },
         ],
       },
