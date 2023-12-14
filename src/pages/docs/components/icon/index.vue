@@ -62,7 +62,6 @@ import IconProps from "./props.json";
 const PageBlock = defineAsyncComponent(() =>
   import("../../utils/pageBlock.vue")
 );
-const CssBlock = defineAsyncComponent(() => import("./css.vue"));
 const CodeBlock = defineAsyncComponent(() =>
   import("../../utils/codeBlock.vue")
 );
