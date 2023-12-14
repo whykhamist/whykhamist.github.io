@@ -40,15 +40,8 @@ export const useSystemStore = defineStore("system", {
     setLoading(message = null) {
       this.loadingMessage = message;
     },
-    toggleTheme(joke = false) {
-      if (!joke) {
-        this.theme.dark = !this.theme.dark;
-      }
-      if (this.theme.dark) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+    toggleTheme() {
+      this.theme.dark = !this.theme.dark;
     },
     toggleFixedNavbar() {
       this.settings.navbar.fixed = !this.settings.navbar.fixed;
