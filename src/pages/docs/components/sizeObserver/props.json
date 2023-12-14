@@ -1,0 +1,17 @@
+[
+  {
+    "name": "tag",
+    "type": "String",
+    "default": "template",
+    "description": [
+      {
+        "type": "text",
+        "content": "Element tag to use. By default, this component does not render any element which works on almost all cases. "
+      },
+      {
+        "type": "html",
+        "content": "<div class='px-3 py-1 rounded-md border border-warning bg-warning/25 font-mono text-sm'><span class='font-semibold'>Note!</span> Changing element tag is currently not stable. It fails most of the time! :)</div>"
+      }
+    ]
+  }
+]

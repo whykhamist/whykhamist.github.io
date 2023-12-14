@@ -1,0 +1,23 @@
+[
+  {
+    "name": "@resize",
+    "type": "(size) => void",
+    "description": "Emitted when parent element's size changes.",
+    "params": [
+      {
+        "name": "size",
+        "type": "Object",
+        "description": [
+          {
+            "type": "text",
+            "content": "The object containing size information of the parent element."
+          },
+          {
+            "type": "code",
+            "content": "{\n   top: 0,\n   right:  0,\n   bottom:  0,\n   left:  0,\n   width:  0,\n   height:  0,\n   x: 0,\n   y: 0,\n   offsetHeight: 0,\n   offsetWidth: 0,\n   scrollHeight: 0,\n   scrollWidth: 0\n}"
+          }
+        ]
+      }
+    ]
+  }
+]

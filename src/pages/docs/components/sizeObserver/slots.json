@@ -1,0 +1,42 @@
+[
+  {
+    "name": "default",
+    "description": "Default slot",
+    "scopes": [
+      {
+        "name": "size",
+        "type": "Object",
+        "description": [
+          {
+            "type": "text",
+            "content": "The object containing size information of the parent element."
+          },
+          {
+            "type": "html",
+            "content": "<div class='px-3 py-1 border border-info bg-info/25 rounded-md'><span class='font-semibold'>Note!</span> Please refer to the <b>\"@resize\"</b> event's <b>size</b> paramenter</div>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "default2",
+    "description": "Default slot",
+    "scopes": [
+      {
+        "name": "size",
+        "type": "Object",
+        "description": [
+          {
+            "type": "text",
+            "content": "The object containing size information of the parent element."
+          },
+          {
+            "type": "html",
+            "content": "<div class='px-3 py-1 border border-info bg-info/25 rounded-md'><span class='font-semibold'>Note!</span> Please refer to the <b>\"@resize\"</b> event's <b>size</b> paramenter</div>"
+          }
+        ]
+      }
+    ]
+  }
+]
