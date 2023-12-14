@@ -6,8 +6,10 @@
       >
         {{ name }}
       </span>
-      <span class="font-black">:</span>
-      <span class="font-bold" v-html="type" />
+      <template v-if="!!type">
+        <span class="font-black">:</span>
+        <span class="font-bold" v-html="type" />
+      </template>
     </div>
     <Descriptor v-if="!!description" :description="description" />
     <div v-if="!!defaultVal" class="">
@@ -60,7 +62,7 @@ const props = defineProps({
   name: String,
   type: String,
   description: {
-    type: String,
+    type: [Object, String],
     default: "",
   },
   defaultVal: {
