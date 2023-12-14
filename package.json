@@ -29,7 +29,7 @@
     "notiwind": "^2.0.2",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate-2": "^2.0.14",
-    "pinia-shared-state": "^0.4.5",
+    "pinia-shared-state": "^0.5.0",
     "sortablejs": "^1.15.1",
     "sortablejs-vue3": "^1.2.11",
     "stickybits": "^3.7.11",
