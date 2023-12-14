@@ -1,0 +1,33 @@
+[
+  {
+    "name": "default",
+    "description": "Main content. Use to replace the input field element. (It is recommended to use <span class='font-bold'>\"TFieldWrapper\"</span> instead.)",
+    "scopes": [
+      {
+        "name": "attr",
+        "type": "Object",
+        "description": [
+          {
+            "type": "text",
+            "content": "Required attributes to bind to the input element."
+          },
+          {
+            "type": "code",
+            "content": "{\n  id: '...', // unique id used for the input element.\n  placeholder: '...', // String to use as plceholer. This should always be an empty string. This is is only used to check if state of placeholder visibility.\n  aria-label: '...', // Label for accessibility.\n  readonly: '...', //Boolean. Indicates readonly element.\n  disabled: '...', //Boolean, Indicates disabled element.\n}"
+          }
+        ],
+        "descHTML": ""
+      },
+      {
+        "name": "classNames",
+        "type": "Array",
+        "description": "Array of default class names used for the input element"
+      },
+      {
+        "name": "error",
+        "type": "Boolean",
+        "description": "Passes the error prop value."
+      }
+    ]
+  }
+]

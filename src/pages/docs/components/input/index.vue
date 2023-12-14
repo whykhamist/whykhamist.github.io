@@ -3,7 +3,7 @@
     title="Input"
     :properties="[...fielWrapperProps, ...compProps]"
     :events="compEvents"
-    :slots="compSlots"
+    :slots="slots"
   >
     <template #intro>
       <div class="grid max-w-3xl gap-5 px-3 py-1 text-lg">
@@ -27,12 +27,14 @@
 </template>
 
 <script setup>
-import { defineAsyncComponent } from "vue";
+import { computed, defineAsyncComponent } from "vue";
+import { mergeObjects } from "../../utils/fn";
 
 import fielWrapperProps from "../fieldWrapper/props.json";
 import compProps from "./props.json";
 import compEvents from "./events.json";
-import compSlots from "../fieldWrapper/slots.json";
+import compSlots from "./slots.json";
+import fwSlots from "../fieldWrapper/slots.json";
 
 const PageBlock = defineAsyncComponent(() =>
   import("../../utils/pageBlock.vue")
@@ -41,4 +43,6 @@ const CompLink = defineAsyncComponent(() => import("../../utils/compLink.vue"));
 const CodeBlock = defineAsyncComponent(() =>
   import("../../utils/codeBlock.vue")
 );
+
+const slots = computed(() => mergeObjects(fwSlots, compSlots));
 </script>
