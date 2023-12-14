@@ -1,5 +1,5 @@
 <template>
-  <div class="font-mono">
+  <div class="font-mono text-sm">
     <slot :html="highlightedCode">
       <pre><code v-html="highlightedCode"></code></pre>
     </slot>
