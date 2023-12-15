@@ -49,9 +49,12 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, ref } from "vue";
+import { computed, defineAsyncComponent, onMounted, ref, watch } from "vue";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
+import { useRoute, useRouter } from "vue-router";
 
+const route = useRoute();
+const router = useRouter();
 const InfoCard = defineAsyncComponent(() => import("./infoCard.vue"));
 
 const $screen = useBreakpoints(breakpointsTailwind);
@@ -86,18 +89,21 @@ const contents = computed(() => {
     _conts.push({
       label: "Properties",
       el: propsCard.value,
+      name: "props",
     });
   }
   if (!!eventsCard.value) {
     _conts.push({
       label: "Events",
       el: eventsCard.value,
+      name: "events",
     });
   }
   if (!!slotsCard.value) {
     _conts.push({
       label: "Slots",
       el: slotsCard.value,
+      name: "slots",
     });
   }
 
@@ -110,4 +116,24 @@ const scrollTo = (el) => {
   let y = el.getBoundingClientRect().top - ($screen.md.value ? 60 : 120);
   document.body.scrollTo({ top: y, behavior: "smooth" });
 };
+
+const scrollToHash = (name) => {
+  let el = contents.value.find((con) => con.name == name);
+  !!el.el && scrollTo(el.el);
+};
+
+watch(
+  () => route.hash,
+  (val) => {
+    let hash = val.replace("#", "");
+    scrollToHash(hash);
+  }
+);
+
+onMounted(() => {
+  if (!!route.hash)
+    setTimeout(() => {
+      scrollToHash(route.hash.replace("#", ""));
+    }, 500);
+});
 </script>
