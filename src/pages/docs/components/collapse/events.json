@@ -1,0 +1,14 @@
+[
+  {
+    "name": "@update:modelValue",
+    "type": "(value) => void",
+    "description": "Emmitted when the modelValue changes. This is not really triggered internally but only here for the v-model directive.",
+    "params": [
+      {
+        "name": "value",
+        "type": "Boolean",
+        "description": "Emmitted value on model change"
+      }
+    ]
+  }
+]

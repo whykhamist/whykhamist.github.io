@@ -109,6 +109,10 @@ const menu = reactive([
             to: { name: "button" },
           },
           {
+            label: "Collapse",
+            to: { name: "collapse" },
+          },
+          {
             label: "Icons",
             to: { name: "icon" },
           },

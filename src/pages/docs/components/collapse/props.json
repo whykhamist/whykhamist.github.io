@@ -1,0 +1,7 @@
+[
+  {
+    "name": "modelValue",
+    "type": "Boolean",
+    "description": "Main model to Opens/Closes the component. Use this together with the @update:modelValue event or use v-model."
+  }
+]

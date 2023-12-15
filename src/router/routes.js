@@ -71,6 +71,15 @@ export default [
               title: "Field Wrapper",
             },
           },
+          {
+            path: "collapse",
+            name: "collapse",
+            component: () =>
+              import("@/pages/docs/components/collapse/index.vue"),
+            meta: {
+              title: "Collapse",
+            },
+          },
         ],
       },
     ],
