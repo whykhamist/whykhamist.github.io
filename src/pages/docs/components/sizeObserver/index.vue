@@ -57,6 +57,7 @@ const content = computed(() => [
   {
     label: "Usage",
     el: sample.value,
+    name: "usage",
   },
 ]);
 </script>

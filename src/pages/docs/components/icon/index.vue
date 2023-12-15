@@ -72,6 +72,7 @@ const dirs = computed(() => [
   {
     label: "Sizes",
     el: sizeSect.value,
+    name: "sizes",
   },
 ]);
 
