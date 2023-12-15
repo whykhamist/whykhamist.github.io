@@ -7,7 +7,7 @@
       <TButton icon="code" class="rounded-full p-1" @click="expand = !expand" />
     </TCardHeader>
     <TCollapse v-model="expand">
-      <div class="flex flex-col">
+      <div class="group relative flex flex-col">
         <div
           class="flex items-center border-b border-foreground/25 bg-background"
         >
@@ -58,6 +58,15 @@
           <CodeBlock v-if="!!css && codeType == 'css'" :code="css" />
           <CodeBlock v-if="!!rawCode && codeType == 'all'" :code="rawCode" />
         </div>
+        <span
+          class="absolute right-4 top-10 opacity-0 transition-opacity group-hover:opacity-75"
+        >
+          <TButton
+            icon="content_copy"
+            class="rounded-md border-2 bg-blue-700/10 p-1"
+            @click="copyCode"
+          />
+        </span>
       </div>
     </TCollapse>
     <TCardBody
@@ -70,6 +79,7 @@
 
 <script setup>
 import { computed, defineAsyncComponent, onMounted, ref, watch } from "vue";
+import { notify } from "@/scripts";
 const props = defineProps({
   label: String,
   rawCode: String,
@@ -101,6 +111,26 @@ const splitToParts = (raw) => {
     script.value = extractCode(raw, matchers.script);
     css.value = extractCode(raw, matchers.css);
   }
+};
+
+const copyCode = () => {
+  let toCopy = "";
+  if (codeType.value == "html") {
+    toCopy = html.value;
+  } else if (codeType.value == "script") {
+    toCopy = script.value;
+  } else if (codeType.value == "css") {
+    toCopy = css.value;
+  } else if (codeType.value == "all") {
+    toCopy = props.rawCode;
+  }
+  navigator.clipboard.writeText(toCopy).then(() => {
+    notify({
+      type: "positive",
+      title: "Success!",
+      text: "Copied to clipboard",
+    });
+  });
 };
 
 watch(
