@@ -1,45 +1,32 @@
 <template>
   <div
-    class="relative flex min-h-full max-w-full flex-auto flex-col gap-5 rounded-2xl px-5"
+    class="relative flex min-h-full max-w-full flex-auto flex-col gap-5 rounded-2xl"
   >
     <slot name="title">
       <div class="text-7xl font-bold">{{ title }}</div>
     </slot>
     <slot name="intro"> </slot>
-    <slot name="tcontent">
-      <div v-if="contents.length > 0" class="px-7 text-xl font-semibold">
-        Content
-        <ul
-          class="select-none [&>li>span]:cursor-pointer [&>li>span]:px-3 [&>li>span]:text-primary hover:[&>li>span]:underline"
-        >
-          <template v-for="con in contents" :key="con.label">
-            <li>
-              <span @click="scrollTo(con.el)">{{ con.label }}</span>
-            </li>
-          </template>
-        </ul>
-      </div>
-    </slot>
+    <slot name="tcontent"> </slot>
     <div class="grid gap-5">
-      <div v-if="!!properties" ref="propsCard">
+      <div v-if="!!properties" id="props" ref="propsCard">
         <InfoCard
           label="PROPS"
           :info="properties"
-          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
+          class="max-h-screen-65 bg-opacity-25"
         />
       </div>
-      <div v-if="events" ref="eventsCard">
+      <div v-if="events" id="events" ref="eventsCard">
         <InfoCard
           label="EVENTS"
           :info="events"
-          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
+          class="max-h-screen-65 bg-opacity-25"
         />
       </div>
-      <div v-if="slots" ref="slotsCard">
+      <div v-if="slots" id="slots" ref="slotsCard">
         <InfoCard
           label="SLOTS"
           :info="slots"
-          class="max-h-screen-65 w-[calc(100dvw_-_4rem)] max-w-3xl bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
+          class="] max-h-screen-65 bg-opacity-25"
         />
       </div>
       <slot> </slot>
@@ -49,12 +36,21 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, onMounted, ref, watch } from "vue";
+import {
+  computed,
+  defineAsyncComponent,
+  inject,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  watch,
+} from "vue";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const router = useRouter();
+const rtlSideBar = inject("rtlSideBar");
 const InfoCard = defineAsyncComponent(() => import("./infoCard.vue"));
 
 const $screen = useBreakpoints(breakpointsTailwind);
@@ -113,27 +109,27 @@ const contents = computed(() => {
 });
 
 const scrollTo = (el) => {
-  let y = el.getBoundingClientRect().top - ($screen.md.value ? 60 : 120);
-  document.body.scrollTo({ top: y, behavior: "smooth" });
+  let y = el.getBoundingClientRect().top + window.scrollY - 120;
+  window.scroll({ top: y, behavior: "smooth" });
 };
 
 const scrollToHash = (name) => {
   let el = contents.value.find((con) => con.name == name);
-  !!el.el && scrollTo(el.el);
+  !!el?.el && scrollTo(el.el);
 };
 
-watch(
-  () => route.hash,
-  (val) => {
-    let hash = val.replace("#", "");
-    scrollToHash(hash);
-  }
-);
+watch(contents, (val) => {
+  rtlSideBar.value.menu = val;
+});
 
 onMounted(() => {
   if (!!route.hash)
     setTimeout(() => {
       scrollToHash(route.hash.replace("#", ""));
     }, 500);
+});
+
+onBeforeUnmount(() => {
+  rtlSideBar.value.menu = [];
 });
 </script>
