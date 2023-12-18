@@ -1,7 +1,5 @@
 <template>
-  <TCard
-    class="relative w-[calc(100dvw_-_4rem)] max-w-3xl border-4 bg-opacity-25 md:w-[calc(100dvw_-_20.5rem)]"
-  >
+  <TCard class="relative border-4 bg-opacity-25">
     <TCardHeader class="border-none">
       <TCardTitle class="!text-2xl !font-bold"> {{ label }} </TCardTitle>
       <TButton icon="code" class="rounded-full p-1" @click="expand = !expand" />
@@ -42,7 +40,7 @@
             @click="codeType = 'css'"
           />
           <TButton
-            v-if="!!rawCode"
+            v-if="!!rawCode && parts > 1"
             label="All"
             class="min-w-[3rem] border-b-2 px-3 py-2"
             :class="{
@@ -99,6 +97,7 @@ const codeType = ref("html");
 const html = ref(null);
 const script = ref(null);
 const css = ref(null);
+const parts = ref(0);
 
 const extractCode = (raw, regex) => {
   let m = regex.exec(raw);
@@ -111,6 +110,9 @@ const splitToParts = (raw) => {
     script.value = extractCode(raw, matchers.script);
     css.value = extractCode(raw, matchers.css);
   }
+  !!html.value && parts.value++;
+  !!script.value && parts.value++;
+  !!css.value && parts.value++;
 };
 
 const copyCode = () => {
