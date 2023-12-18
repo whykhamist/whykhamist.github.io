@@ -1,59 +1,59 @@
 <template>
   <Header
-    class="z-50 flex bg-background bg-opacity-75 p-0 py-1 text-foreground backdrop-blur-sm transition-colors duration-1000"
+    class="z-50 grid border-b-2 border-foreground/25 bg-background p-0 py-1 text-foreground backdrop-blur-sm transition-colors duration-1000"
     :class="[systemStore.settings.navbar.fixed && 'fixed left-0 top-0 z-10']"
     :style="{ right: `${layoutWidthNoScroll}px` }"
   >
     <SizeObserver @resize="onHeaderResize" />
     <div
-      class="flex min-h-full min-w-full flex-col gap-1 px-4 sm:flex-row md:items-center"
+      class="flex flex-auto items-center border-b border-foreground/25 px-3 py-1"
     >
-      <div class="flex flex-auto items-center">
-        <slot name="prepend"></slot>
-        <router-link
-          :to="{ name: 'HomePage' }"
-          class="group inline-flex items-center"
+      <router-link
+        :to="{ name: 'HomePage' }"
+        class="group inline-flex items-center"
+      >
+        <TImage
+          src="/favicons/baguioseal.svg"
+          class="aspect-square w-12 rounded-full border-light transition-all duration-1000 group-hover:rotate-[720deg]"
+        />
+        <span
+          class="flex items-center justify-center p-2 text-lg font-semibold md:text-2xl"
         >
-          <TImage
-            src="/favicons/baguioseal.svg"
-            class="aspect-square w-12 rounded-full border-light transition-all duration-1000 group-hover:rotate-[720deg]"
-          />
-          <span
-            class="flex items-center justify-center p-2 text-lg font-semibold md:text-2xl"
-          >
-            {{ $system.product_name }}
-          </span>
-        </router-link>
-      </div>
-      <nav class="flex h-full items-center justify-center md:justify-end">
-        <ul class="flex h-full items-center gap-1 [&>li]:h-full">
-          <li>
-            <TButton
-              label="Components"
-              class="my-1 flex h-10 items-center justify-center rounded-lg px-3"
-              :to="{ name: 'components' }"
-            />
-          </li>
-          <li>
-            <ThemeToggle
-              :label="$md ? 'Theme' : null"
-              class="h-10 rounded-lg px-3"
-            />
-          </li>
-          <li>
-            <TButton
-              v-if="route.name != 'HomePage'"
-              :icon="
-                systemStore.settings.navbar.fixed ? 'toggle_on' : 'toggle_off'
-              "
-              :label="$md ? 'Fixed Nav' : null"
-              class="my-1 h-10 rounded-lg px-3"
-              @click="systemStore.toggleFixedNavbar()"
-            />
-          </li>
-        </ul>
-      </nav>
+          {{ $system.product_name }}
+        </span>
+      </router-link>
     </div>
+    <nav class="flex h-full items-center justify-center gap-1 md:justify-end">
+      <div class="flex-auto">
+        <slot name="prepend"></slot>
+      </div>
+      <ul class="flex h-full items-center gap-1 [&>li]:h-full">
+        <li>
+          <TButton
+            label="Components"
+            class="my-1 flex h-10 items-center justify-center rounded-lg px-3"
+            :to="{ name: 'components' }"
+          />
+        </li>
+        <li>
+          <ThemeToggle
+            :label="$md ? 'Theme' : null"
+            class="h-10 rounded-lg px-3"
+          />
+        </li>
+        <li>
+          <TButton
+            :icon="
+              systemStore.settings.navbar.fixed ? 'toggle_on' : 'toggle_off'
+            "
+            :label="$md ? 'Fixed Nav' : null"
+            class="my-1 h-10 rounded-lg px-3"
+            @click="systemStore.toggleFixedNavbar()"
+          />
+        </li>
+      </ul>
+      <slot name="append"> </slot>
+    </nav>
   </Header>
 </template>
 
@@ -103,3 +103,9 @@ onBeforeUnmount(() => {
   document.body.removeEventListener("scroll", onBodyScroll);
 });
 </script>
+
+<style scoped>
+.router-link-active {
+  @apply bg-foreground/5;
+}
+</style>
