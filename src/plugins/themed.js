@@ -1,4 +1,4 @@
-import { watch } from "vue";
+import { ref, watch } from "vue";
 import { useSystemStore } from "@/stores";
 
 const drawTArt = () => {
@@ -20,6 +20,7 @@ export default {
     drawTArt();
 
     const systemStore = useSystemStore();
+    const modals = ref({});
     const setTheme = (isDark) => {
       if (isDark) {
         document.documentElement.classList.add("dark");
@@ -28,6 +29,20 @@ export default {
       }
     };
     setTheme(systemStore.theme.dark);
+
     watch(() => systemStore.theme.dark, setTheme);
+    watch(
+      modals,
+      (val) => {
+        if (Object.values(val).some((v) => v)) {
+          document.body.classList.add("overflow-hidden");
+        } else {
+          document.body.classList.remove("overflow-hidden");
+        }
+      },
+      { deep: true }
+    );
+
+    app.provide("modals", modals);
   },
 };
