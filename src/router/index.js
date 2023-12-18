@@ -6,6 +6,13 @@ const Router = createRouter({
   scrollBehavior: (to, from, savedPosition) => {
     if (savedPosition) {
       return savedPosition;
+    } else if (to.hash && !!document.querySelector(to.hash)) {
+      let el = document.querySelector(to.hash);
+      let y = el.getBoundingClientRect().top + window.scrollY - 120;
+      return {
+        top: y,
+        behavior: "smooth",
+      };
     } else {
       return { top: 0, left: 0 };
     }
