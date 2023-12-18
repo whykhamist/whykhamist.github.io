@@ -19,6 +19,7 @@ import DevDetect from "@/plugins/devdetect";
 import Themed from "@/plugins/themed";
 import SWRegister from "@/plugins/swRegister";
 import Connectivity from "@/plugins/connectivity";
+import SideBar from "@/plugins/sidebar";
 
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
@@ -48,6 +49,7 @@ async function init() {
   });
   app.use(Themed);
   app.use(Connectivity);
+  app.use(SideBar);
 
   app.directive("ripple", TRipple);
   app.directive("trapFocus", TrapFocus);
