@@ -15,7 +15,7 @@ export default [
   },
   {
     path: "/",
-    component: () => import("@/layouts/main.vue"),
+    component: () => import("@/layouts/docs.vue"),
     children: [
       {
         path: "/docs",
