@@ -85,7 +85,9 @@ import {
 } from "vue";
 import { useSystemStore } from "@/stores";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
 const LSLayout = defineAsyncComponent(() => import("./lockScreenLayout.vue"));
 const TopNav = defineAsyncComponent(() => import("./topNav.vue"));
 const SideBar = defineAsyncComponent(() => import("./sidebar/main.vue"));
@@ -164,6 +166,11 @@ watch($xl, () => {
 });
 
 watch($lg, () => {
+  rtlSideBar.value.show = false;
+});
+
+watch(route, (val) => {
+  sideBar.value.show = false;
   rtlSideBar.value.show = false;
 });
 </script>
