@@ -13,7 +13,7 @@
           },
           {
             "type": "code",
-            "content": "{\n  id: '...', // unique id used for the input element.\n  placeholder: '...', // String to use as plceholer. This should always be an empty string. This is is only used to check if state of placeholder visibility.\n  aria-label: '...', // Label for accessibility.\n  readonly: '...', //Boolean. Indicates readonly element.\n  disabled: '...', //Boolean, Indicates disabled element.\n}"
+            "content": "{\r\n  /**\r\n   * unique id used for the input element.\r\n   */\r\n  id: '...',\r\n\r\n  /**\r\n   *  String to use as plceholer. This should always be \r\n   *  an empty string. This is is only used to check if state\r\n   *  of placeholder visibility.\r\n   */\r\n  placeholder: '...',\r\n\r\n  /**\r\n   * Label for accessibility.\r\n   */\r\n  aria-label: '...',\r\n\r\n  /**\r\n   * Boolean. Indicates readonly element.\r\n   */\r\n  readonly: '...',\r\n\r\n  /**\r\n   * Boolean, Indicates disabled element.\r\n   */\r\n  disabled: '...',\r\n}"
           }
         ],
         "descHTML": ""
