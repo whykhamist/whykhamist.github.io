@@ -21,10 +21,10 @@
       </div>
     </template>
 
-    <div ref="sample" class="flex flex-col gap-5">
+    <div ref="usage" id="usage" class="flex flex-col gap-5">
       <div class="py-5 text-5xl font-bold text-primary">Usage</div>
       <div
-        class="max-w-3xl rounded-2xl border-4 border-foreground/25 px-3 py-1 font-mono dark:bg-dark dark:text-light"
+        class="rounded-2xl border-4 border-foreground/25 px-3 py-1 font-mono dark:bg-dark dark:text-light"
       >
         <CodeBlock
           :code="'<SizeObserver @resize=\'onResize\' />\nOR\n<size-observer  @resize=\'onResize\'/>'"
@@ -51,13 +51,23 @@ const CodeBlock = defineAsyncComponent(() =>
   import("../../utils/codeBlock.vue")
 );
 
-const sample = ref(null);
+const usage = ref(null);
 
 const content = computed(() => [
   {
     label: "Usage",
-    el: sample.value,
+    el: usage.value,
     name: "usage",
+    sub: [
+      {
+        label: "Via Slots",
+        name: "via-slots",
+      },
+      {
+        label: "Via Events",
+        name: "via-events",
+      },
+    ],
   },
 ]);
 </script>
