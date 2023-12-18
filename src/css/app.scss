@@ -6,7 +6,8 @@
     --color-foreground: 300 7% 3%;
     --color-background-accent: 281 9% 53%;
     --color-page-background: 280 9% 93%;
-    --color-primary: 282 9% 37%;
+    // --color-primary: 282 9% 37%;
+    --color-primary: 198 100% 50%;
 
     --color-secondary: 174deg 63% 40%;
     --color-accent: 291deg 64% 42%;
@@ -25,21 +26,21 @@
     --color-foreground: 300 7% 97%;
     --color-background-accent: 281 9% 47%;
     --color-page-background: 280 9% 7%;
-    --color-primary: 282 9% 63%;
+    // --color-primary: 282 9% 63%;
   }
 }
 
 @layer utilities {
   html {
-    @apply max-h-[100dvh] overflow-hidden font-dosis;
+    @apply max-h-screen font-dosis;
   }
 
   body {
-    @apply max-h-[100dvh] overflow-y-auto;
+    @apply max-h-screen overflow-y-auto;
   }
 
   div#app {
-    @apply min-h-[100dvh] min-w-full overflow-hidden;
+    @apply min-h-screen min-w-full;
   }
 
   html,
@@ -86,7 +87,7 @@
   // body,
   // .TScroll,
   * {
-    @apply scrollbar scrollbar-track-foreground/25 scrollbar-thumb-gray-900  scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-2 scrollbar-h-2 dark:scrollbar-track-page-background dark:scrollbar-thumb-gray-500;
+    @apply scrollbar scrollbar-track-light/25 scrollbar-thumb-primary/50  scrollbar-w-2 scrollbar-h-2 dark:scrollbar-track-page-background;
   }
 
   .noTapHighlight {
