@@ -1,33 +1,16 @@
 <template>
   <PageBlock title="Button" :properties="ButtonProps" :events="ButtonEvents">
-    <div class="grid gap-5">
+    <div ref="sample" class="flex flex-col gap-5">
+      <div class="py-5 text-5xl font-bold text-primary">Usage</div>
       <div
-        v-if="false"
-        class="max-w-3xl rounded-lg border border-foreground/25 bg-background-accent"
+        class="rounded-2xl border-4 border-foreground/25 px-3 py-1 font-mono dark:bg-dark dark:text-light"
       >
-        <div class="flex items-center px-3">
-          <div class="flex-auto text-3xl font-bold text-primary">Basic</div>
-        </div>
-        <div class="flex items-center gap-2 p-5">
-          <TButton label="Button 1" class="rounded-md px-3 py-1" />
-          <TButton
-            label="Button 2"
-            class="rounded-md bg-primary px-3 py-1 text-light"
-          />
-          <TButton
-            label="Button 3"
-            class="rounded-md bg-negative px-3 py-1 text-light"
-          />
-          <TButton
-            label="Button 4"
-            class="rounded-md bg-warning px-3 py-1 text-dark"
-          />
-          <TButton
-            label="Button 4"
-            class="rounded-md bg-info px-3 py-1 text-dark"
-          />
-        </div>
+        <CodeBlock
+          :code="'<TButton ... />\nOR\n<t-button  ... />'"
+          class="font-bold"
+        />
       </div>
+      <Usage />
     </div>
   </PageBlock>
 </template>
@@ -40,4 +23,9 @@ import ButtonEvents from "./events.json";
 const PageBlock = defineAsyncComponent(() =>
   import("../../utils/pageBlock.vue")
 );
+const CodeBlock = defineAsyncComponent(() =>
+  import("../../utils/codeBlock.vue")
+);
+
+const Usage = defineAsyncComponent(() => import("./usage.vue"));
 </script>
