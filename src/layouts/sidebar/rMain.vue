@@ -1,8 +1,18 @@
 <template>
-  <SideBar>
+  <SideBar :fixed="fixed">
+    <template #before="{ close }">
+      <div class="flex items-center justify-end gap-2 px-3 py-5">
+        <TButton
+          v-if="fixed"
+          icon="close"
+          class="rounded-full p-1"
+          @click="close()"
+        />
+      </div>
+    </template>
     <template v-for="m in menus" :key="m">
       <ActionButton :label="m.label" @click="m.action" />
-      <Grouped v-if="!!m.sub" :label="null" :menu="m"> </Grouped>
+      <Grouped v-if="!!m.sub" noOpener :menu="m"> </Grouped>
     </template>
   </SideBar>
 </template>
@@ -25,9 +35,14 @@ const SideBar = defineAsyncComponent(() => import("./index.vue"));
 const Grouped = defineAsyncComponent(() => import("./grouped.vue"));
 const ActionButton = defineAsyncComponent(() => import("./actionButton.vue"));
 
-const props = defineProps({});
+const props = defineProps({
+  fixed: {
+    type: Boolean,
+    default: false,
+  },
+});
 
-const menus = ref([]);
+const menus = computed(() => mapMenu(rtlSideBar.value.menu));
 
 const mapMenu = (menu) => {
   let result = menu.map((m) => {
@@ -40,12 +55,4 @@ const mapMenu = (menu) => {
   });
   return result;
 };
-
-watch(
-  rtlSideBar,
-  (val) => {
-    menus.value = mapMenu(val.menu);
-  },
-  { deep: true }
-);
 </script>

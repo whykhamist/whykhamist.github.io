@@ -1,8 +1,12 @@
 <template>
   <TButton class="w-full rounded-lg border border-transparent px-3 py-1">
-    <div class="pointer-events-none flex items-center gap-1">
+    <div class="pointer-events-none flex items-center gap-1 whitespace-nowrap">
       <TIcon v-if="!!icon" :name="icon" :type="iconType" :class="_iconClass" />
-      <div class="flex-auto text-start font-semibold">
+      <div
+        v-if="!!label"
+        class="flex-auto whitespace-nowrap text-start font-semibold"
+        :class="_labelClass"
+      >
         {{ label }}
       </div>
       <TIcon
@@ -12,11 +16,16 @@
         :class="_rightIconClass"
       />
     </div>
+    <TToolTip v-if="!!tooltip" :position="tooltipPosition" arrow>
+      {{ tooltip }}
+    </TToolTip>
   </TButton>
 </template>
 
 <script setup>
 import { computed, ref } from "vue";
+import { Helpers } from "@/scripts";
+
 const props = defineProps({
   label: String,
   icon: {
@@ -29,7 +38,7 @@ const props = defineProps({
   },
   iconClass: {
     type: [Object, String],
-    default: "",
+    default: () => [],
   },
   rightIcon: {
     type: String,
@@ -41,17 +50,27 @@ const props = defineProps({
   },
   rightIconClass: {
     type: [Object, String],
-    default: "",
+    default: () => [],
+  },
+  tooltip: {
+    type: String,
+    default: null,
+  },
+  tooltipPosition: {
+    type: String,
+    default: "right",
+  },
+  labelClass: {
+    type: [Object, String],
+    default: () => [],
   },
 });
 
-const _iconClass = computed(() =>
-  Array.isArray(props.iconClass) ? props.iconClass : [props.iconClass]
-);
+const _iconClass = computed(() => Helpers.classFormatter(props.iconClass));
 
 const _rightIconClass = computed(() =>
-  Array.isArray(props.rightIconClass)
-    ? props.rightIconClass
-    : [props.rightIconClass]
+  Helpers.classFormatter(props.rightIconClass)
 );
+
+const _labelClass = computed(() => Helpers.classFormatter(props.labelClass));
 </script>

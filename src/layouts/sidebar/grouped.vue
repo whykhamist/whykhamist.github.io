@@ -1,13 +1,19 @@
 <template>
-  <div>
+  <div class="grid">
     <ActionButton
-      v-if="!!label"
+      v-if="!noOpener"
       :label="label"
       v-bind="icons"
-      :class="{ ..._btnClass, 'router-link-active': open }"
-      @click="open = !open"
+      :tooltip="tooltip"
+      :tooltipPosition="tooltipPosition"
+      :labelClass="_labelClass"
+      :class="{ ..._btnClass, 'router-link-active': _open }"
+      @click="_open = !_open"
     />
-    <TCollapse :modelValue="!label || (!!label && open)" class="!duration-75">
+    <TCollapse
+      :modelValue="noOpener || (!noOpener && _open)"
+      class="!duration-75"
+    >
       <div
         class="grid gap-1 border-l border-primary py-1 pl-3"
         :class="{
@@ -28,7 +34,12 @@
             :icon="sub.icon"
             @click="sub.action"
           />
-          <Grouped v-else-if="!!sub.sub" :label="sub.label" :menu="sub" />
+          <Grouped
+            v-else-if="!!sub.sub"
+            :icon="sub.icon"
+            :label="sub.label"
+            :menu="sub"
+          />
         </template>
       </div>
     </TCollapse>
@@ -36,8 +47,16 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, onMounted, ref, useSlots } from "vue";
+import {
+  computed,
+  defineAsyncComponent,
+  onMounted,
+  ref,
+  useSlots,
+  watch,
+} from "vue";
 import { useRoute } from "vue-router";
+import { Helpers } from "@/scripts";
 
 const route = useRoute();
 const ActionButton = defineAsyncComponent(() => import("./actionButton.vue"));
@@ -48,9 +67,13 @@ const props = defineProps({
     default: null,
   },
   menu: Object,
-  collapsible: {
+  open: {
     type: Boolean,
-    default: true,
+    default: null,
+  },
+  icon: {
+    type: String,
+    default: null,
   },
   openIcon: {
     type: String,
@@ -70,22 +93,45 @@ const props = defineProps({
   },
   btnClass: {
     type: [Object, String],
-    default: "",
+    default: () => [],
+  },
+  labelClass: {
+    type: [Object, String],
+    default: () => [],
   },
   noOpener: {
     type: Boolean,
     default: false,
   },
+  tooltip: {
+    type: String,
+    default: null,
+  },
+  tooltipPosition: {
+    type: String,
+    default: "right",
+  },
 });
-const open = ref(false);
+
+const emit = defineEmits(["update:open"]);
+
+const isOpen = ref(false);
+
+const _open = computed({
+  get: () => props.open ?? isOpen.value,
+  set: (val) => {
+    emit("update:open", val);
+    isOpen.value = val;
+  },
+});
 
 const icons = computed(() => {
   let _icons = {
-    icon: open.value ? props.closeIcon : props.openIcon,
+    icon: _open.value ? props.closeIcon : props.openIcon,
     type: props.iconType,
-    class: { transition: true, "rotate-180": open.value },
+    class: { transition: true, "rotate-180": _open.value },
   };
-  return props.rightIcon
+  let result = props.rightIcon
     ? {
         rightIcon: _icons.icon,
         rightIconType: _icons.type,
@@ -96,16 +142,20 @@ const icons = computed(() => {
         iconType: _icons.type,
         iconClass: _icons.class,
       };
+  if (props.rightIcon && !!props.icon) {
+    Object.assign(result, { icon: props.icon });
+  }
+  return result;
 });
 
-const _btnClass = computed(() =>
-  Array.isArray(props.btnClass) ? props.btnClass : [props.btnClass]
-);
+const _btnClass = computed(() => Helpers.classFormatter(props.btnClass));
+
+const _labelClass = computed(() => Helpers.classFormatter(props.labelClass));
 
 const checkActive = () => {
   if (!!props.menu && !!props.menu.sub) {
     let result = checkActiveSub(props.menu.sub);
-    open.value = result;
+    _open.value = result;
   }
 };
 
@@ -114,6 +164,13 @@ const checkActiveSub = (sub) => {
     (v) => v.to?.name == route.name || (!!v.sub && checkActiveSub(v.sub))
   );
 };
+
+watch(
+  () => props.open,
+  (val) => {
+    isOpen.value = val;
+  }
+);
 
 onMounted(() => {
   checkActive();

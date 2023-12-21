@@ -3,7 +3,7 @@
     <div
       class="transition-colors"
       :class="{
-        [_wrapperClass]: true,
+        ..._wrapperClass,
         'static z-auto flex flex-auto justify-center': !fixed,
         'fixed inset-0 z-[1030] ': fixed,
         'flex justify-end': rtl,
@@ -15,17 +15,21 @@
       <transition v-bind="transitionClass">
         <SideBarLayout
           v-if="!fixed || (fixed && show)"
-          :class="{
-            [_contentClass]: true,
-            'bg-background text-foreground': fixed,
-          }"
+          class="bg-background text-foreground"
+          :class="_contentClass"
+          :contentClass="menuClass"
           :headerSize="headerSize"
           :rtl="rtl"
           :fixed="fixed"
           @click.stop
+          @transitionEnd="(e) => emit('transitionEnd', e)"
         >
           <template v-for="(index, name) in slots" v-slot:[name]="data">
-            <slot :name="name" v-bind="data"></slot>
+            <slot
+              :name="name"
+              v-bind="data"
+              :close="() => emit('close')"
+            ></slot>
           </template>
         </SideBarLayout>
       </transition>
@@ -66,27 +70,32 @@ const props = defineProps({
     default: false,
   },
   wrapperClass: {
-    type: [Array, String],
+    type: [Object, String],
     default: () => [],
   },
   contentClass: {
-    type: [Array, String],
+    type: [Object, String],
+    default: () => [],
+  },
+  menuClass: {
+    type: [Object, String],
     default: () => [],
   },
 });
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(["close", "transitionEnd"]);
 
 const SideBarLayout = defineAsyncComponent(() => import("./sideBarLayout.vue"));
 
 const _ID = ref(Helpers.uniqid("mdl"));
+const sidebarLayout = ref(null);
 
 const _wrapperClass = computed(() =>
-  Array.isArray(props.wrapperClass) ? props.wrapperClass : [props.wrapperClass]
+  Helpers.classFormatter(props.wrapperClass)
 );
 
 const _contentClass = computed(() =>
-  Array.isArray(props.contentClass) ? props.contentClass : [props.contentClass]
+  Helpers.classFormatter(props.contentClass)
 );
 
 const transitionClass = computed(() => ({
