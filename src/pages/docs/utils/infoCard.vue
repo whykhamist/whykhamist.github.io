@@ -1,5 +1,5 @@
 <template>
-  <TCard class="relative border-4">
+  <TCard class="relative max-w-screen-95 border-4">
     <TCardHeader class="bg-opacity-50">
       <TCardTitle class="!text-2xl !font-bold"> {{ label }} </TCardTitle>
       <TInput
@@ -22,7 +22,7 @@
         </template>
       </TInput>
     </TCardHeader>
-    <TCardBody class="divide-y divide-foreground/25 !p-0">
+    <TCardBody class="divide-y divide-foreground/25 overflow-auto !p-0">
       <template v-if="filtered.length <= 0">
         <div class="text-center text-sm font-semibold italic text-gray-400">
           No result!
