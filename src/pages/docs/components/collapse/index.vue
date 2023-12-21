@@ -5,7 +5,7 @@
     :events="compEvents"
     :dir="content"
   >
-    <div ref="usage" id="usage" class="flex flex-col gap-5">
+    <div id="usage" class="flex flex-col gap-5">
       <div class="py-5 text-5xl font-bold text-primary">Usage</div>
       <div
         class="rounded-2xl border-4 border-foreground/25 px-3 py-1 font-mono dark:bg-dark dark:text-light"
@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, onMounted, ref } from "vue";
+import { defineAsyncComponent, onMounted, ref } from "vue";
 
 import compProps from "./props.json";
 import compEvents from "./events.json";
@@ -33,11 +33,8 @@ const CodeBlock = defineAsyncComponent(() =>
 );
 const Usage = defineAsyncComponent(() => import("./usage.vue"));
 
-const usage = ref(null);
-
-const content = computed(() => [
+const content = ref(() => [
   {
-    el: usage.value,
     label: "Usage",
     name: "usage",
   },
