@@ -21,7 +21,7 @@
       </div>
     </template>
 
-    <div ref="usage" id="usage" class="flex flex-col gap-5">
+    <div id="usage" class="flex flex-col gap-5">
       <div class="py-5 text-5xl font-bold text-primary">Usage</div>
       <div
         class="rounded-2xl border-4 border-foreground/25 px-3 py-1 font-mono dark:bg-dark dark:text-light"
@@ -56,16 +56,15 @@ const usage = ref(null);
 const content = computed(() => [
   {
     label: "Usage",
-    el: usage.value,
     name: "usage",
     sub: [
       {
         label: "Via Slots",
-        name: "via-slots",
+        name: "viaSlots",
       },
       {
         label: "Via Events",
-        name: "via-events",
+        name: "viaEvents",
       },
     ],
   },

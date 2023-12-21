@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col gap-5">
-    <div class="" id="via-slots">
+    <div class="" id="viaSlots">
       <SampleBlock label="Via Slots" :rawCode="RawCodeSlots">
         <ViaSlots />
       </SampleBlock>
     </div>
 
-    <div class="" id="via-events">
+    <div class="" id="viaEvents">
       <SampleBlock label="Via events" :rawCode="RawCodeEvents">
         <ViaEvents />
       </SampleBlock>
