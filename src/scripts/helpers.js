@@ -406,5 +406,20 @@ const Helpers = {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
   },
+
+  classFormatter: (classNames) => {
+    let result = {};
+    if (Array.isArray(classNames)) {
+      let tmp = classNames.map((v) => ({
+        [v]: true,
+      }));
+      Object.assign(result, tmp);
+    } else if (typeof classNames == "object") {
+      Object.assign(result, classNames);
+    } else {
+      Object.assign(result, { [classNames]: true });
+    }
+    return result;
+  },
 };
 export default Helpers;
