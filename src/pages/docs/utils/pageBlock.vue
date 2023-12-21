@@ -6,31 +6,28 @@
       <div class="text-7xl font-bold">{{ title }}</div>
     </slot>
     <slot name="intro"> </slot>
-    <slot name="tcontent"> </slot>
-    <div class="grid gap-5">
-      <div v-if="!!properties" id="props" ref="propsCard">
-        <InfoCard
-          label="PROPS"
-          :info="properties"
-          class="max-h-screen-65 bg-opacity-25"
-        />
-      </div>
-      <div v-if="events" id="events" ref="eventsCard">
-        <InfoCard
-          label="EVENTS"
-          :info="events"
-          class="max-h-screen-65 bg-opacity-25"
-        />
-      </div>
-      <div v-if="slots" id="slots" ref="slotsCard">
-        <InfoCard
-          label="SLOTS"
-          :info="slots"
-          class="] max-h-screen-65 bg-opacity-25"
-        />
-      </div>
-      <slot> </slot>
-    </div>
+    <InfoCard
+      v-if="!!properties"
+      id="props"
+      label="PROPS"
+      :info="properties"
+      class="max-h-screen-65 bg-opacity-25"
+    />
+    <InfoCard
+      v-if="!!events"
+      id="events"
+      label="EVENTS"
+      :info="events"
+      class="max-h-screen-65 bg-opacity-25"
+    />
+    <InfoCard
+      v-if="!!slots"
+      id="slots"
+      label="SLOTS"
+      :info="slots"
+      class="max-h-screen-65 bg-opacity-25"
+    />
+    <slot> </slot>
     <div class="h-32"></div>
   </div>
 </template>
@@ -40,6 +37,7 @@ import {
   computed,
   defineAsyncComponent,
   inject,
+  nextTick,
   onBeforeUnmount,
   onMounted,
   ref,
@@ -75,30 +73,23 @@ const props = defineProps({
   },
 });
 
-const propsCard = ref(null);
-const eventsCard = ref(null);
-const slotsCard = ref(null);
-
 const contents = computed(() => {
   let _conts = [];
-  if (!!propsCard.value) {
+  if (!!props.properties) {
     _conts.push({
       label: "Properties",
-      el: propsCard.value,
       name: "props",
     });
   }
-  if (!!eventsCard.value) {
+  if (!!props.events) {
     _conts.push({
       label: "Events",
-      el: eventsCard.value,
       name: "events",
     });
   }
-  if (!!slotsCard.value) {
+  if (!!props.slots) {
     _conts.push({
       label: "Slots",
-      el: slotsCard.value,
       name: "slots",
     });
   }
@@ -114,8 +105,8 @@ const scrollTo = (el) => {
 };
 
 const scrollToHash = (name) => {
-  let el = contents.value.find((con) => con.name == name);
-  !!el?.el && scrollTo(el.el);
+  let el = document.querySelector(name);
+  !!el && scrollTo(el);
 };
 
 watch(contents, (val) => {
@@ -123,9 +114,10 @@ watch(contents, (val) => {
 });
 
 onMounted(() => {
+  rtlSideBar.value.menu = contents.value;
   if (!!route.hash)
     setTimeout(() => {
-      scrollToHash(route.hash.replace("#", ""));
+      scrollToHash(route.hash);
     }, 500);
 });
 
