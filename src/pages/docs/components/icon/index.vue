@@ -13,8 +13,8 @@
       </div>
     </template>
     <div class="grid max-w-3xl gap-5">
-      <div ref="sizeSect" class="grid gap-4">
-        <div class="text-3xl font-bold text-primary">Size</div>
+      <div id="sizes" class="grid gap-4">
+        <div class="text-3xl font-bold text-primary">Sizes</div>
         <div>
           Icon sizes are derived from existing tailwindcss text sizes and are
           selected in accordance with material design icons guidelines. Refer to
@@ -66,12 +66,9 @@ const CodeBlock = defineAsyncComponent(() =>
   import("../../utils/codeBlock.vue")
 );
 
-const sizeSect = ref(null);
-
 const dirs = computed(() => [
   {
     label: "Sizes",
-    el: sizeSect.value,
     name: "sizes",
   },
 ]);
