@@ -160,7 +160,7 @@ const props = defineProps({
     default: () => ["zoom", "torch", "device-cycle", "fullscreen"],
   },
 });
-const emit = defineEmits(["detect", "update:paused", "error"]);
+const emit = defineEmits(["detect", "loaded", "update:paused", "error"]);
 
 const devices = ref([]);
 const device = ref(null);
@@ -233,9 +233,10 @@ const reload = async () => {
 };
 
 const getDevices = async () => {
-  devices.value = (await navigator.mediaDevices.enumerateDevices()).filter(
-    ({ kind }) => kind === "videoinput"
-  );
+  devices.value =
+    (await navigator.mediaDevices?.enumerateDevices())?.filter(
+      ({ kind }) => kind === "videoinput"
+    ) ?? [];
   let useIndex = 0;
 
   if (devices.value.length > 0) {
@@ -247,6 +248,8 @@ const getDevices = async () => {
     }
     setDevice(devices.value[useIndex]);
   }
+
+  emit("loaded", devices.value);
 };
 
 const cycleDevices = () => {

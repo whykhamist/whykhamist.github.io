@@ -1,12 +1,8 @@
 <template>
   <component
     :is="!!to ? 'router-link' : tag"
-    class="relative overflow-hidden leading-none !outline-none outline-offset-0 focus:outline-primary"
-    :class="[
-      disabled &&
-        'cursor-not-allowed !text-gray-400 after:absolute after:inset-0 after:bg-gray-500 after:bg-opacity-25',
-      !!to && 'block',
-    ]"
+    class="relative overflow-hidden leading-none !outline-none outline-offset-0 after:absolute focus:outline-primary disabled:cursor-not-allowed disabled:!text-gray-400 disabled:after:inset-0 disabled:after:bg-gray-500 disabled:after:bg-opacity-25"
+    :class="[!!to && 'block']"
     v-ripple="ripple"
     v-bind="Object.assign({}, $attrs, attrs)"
     :disabled="disabled"
@@ -21,7 +17,7 @@
           v-if="!!icon"
           :name="icon"
           :size="iconSize"
-          :class="[!!label && 'mr-1', ..._iconClass]"
+          :class="{ 'mr-1': !!label, ..._iconClass }"
         />
         <span v-if="!!label" class="uppercase leading-none">
           {{ `${label}` }}
@@ -34,6 +30,7 @@
 <script setup>
 import { computed, useSlots } from "vue";
 import { useRouter } from "vue-router";
+import { Helpers } from "@/scripts";
 
 const slots = useSlots();
 const router = useRouter();
@@ -63,11 +60,11 @@ const props = defineProps({
     },
   },
   iconClass: {
-    type: [String, Array],
+    type: [String, Object],
     default: () => [],
   },
   contentClass: {
-    type: [String, Array],
+    type: [String, Object],
     default: () => [],
   },
   focusClass: {
@@ -101,10 +98,8 @@ const attrs = computed(() => {
 });
 
 const _contentClass = computed(() =>
-  Array.isArray(props.contentClass) ? props.contentClass : [props.contentClass]
+  Helpers.classFormatter(props.contentClass)
 );
 
-const _iconClass = computed(() =>
-  Array.isArray(props.iconClass) ? props.iconClass : [props.iconClass]
-);
+const _iconClass = computed(() => Helpers.classFormatter(props.iconClass));
 </script>

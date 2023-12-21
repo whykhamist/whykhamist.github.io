@@ -1,9 +1,9 @@
 <template>
-  <component :is="'span'" :class="className" aria-hidden="true">
+  <i :class="className" aria-hidden="true">
     <slot>
       {{ name }}
     </slot>
-  </component>
+  </i>
 </template>
 
 <script setup>
