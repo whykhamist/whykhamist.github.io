@@ -53,6 +53,7 @@
       <RtlSideBar
         :headerSize="headerSize"
         wrapperClass="border-r border-foreground/25"
+        contentClass="w-80"
         :fixed="!$lg"
         :show="rtlSideBar.show"
         rtl
