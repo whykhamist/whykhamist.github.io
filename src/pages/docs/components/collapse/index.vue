@@ -33,7 +33,7 @@ const CodeBlock = defineAsyncComponent(() =>
 );
 const Usage = defineAsyncComponent(() => import("./usage.vue"));
 
-const content = ref(() => [
+const content = ref([
   {
     label: "Usage",
     name: "usage",

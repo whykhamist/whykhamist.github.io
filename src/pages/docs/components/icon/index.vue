@@ -56,7 +56,7 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, ref } from "vue";
+import { defineAsyncComponent, ref } from "vue";
 import IconProps from "./props.json";
 
 const PageBlock = defineAsyncComponent(() =>
@@ -66,7 +66,7 @@ const CodeBlock = defineAsyncComponent(() =>
   import("../../utils/codeBlock.vue")
 );
 
-const dirs = computed(() => [
+const dirs = ref([
   {
     label: "Sizes",
     name: "sizes",

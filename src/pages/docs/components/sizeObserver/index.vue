@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { ref, computed, defineAsyncComponent, onMounted } from "vue";
+import { ref, defineAsyncComponent, onMounted } from "vue";
 
 import compProps from "./props.json";
 import compEvents from "./events.json";
@@ -53,7 +53,7 @@ const CodeBlock = defineAsyncComponent(() =>
 
 const usage = ref(null);
 
-const content = computed(() => [
+const content = ref([
   {
     label: "Usage",
     name: "usage",
