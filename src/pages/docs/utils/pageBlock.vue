@@ -56,8 +56,8 @@ const $screen = useBreakpoints(breakpointsTailwind);
 const props = defineProps({
   title: String,
   dir: {
-    type: Object,
-    default: [],
+    type: Array,
+    default: () => [],
   },
   properties: {
     type: Object,
@@ -93,8 +93,9 @@ const contents = computed(() => {
       name: "slots",
     });
   }
-
-  _conts = [..._conts, ...props.dir];
+  if (Array.isArray(props.dir) && props.dir.length > 0) {
+    _conts = [..._conts, ...props.dir];
+  }
 
   return _conts;
 });
