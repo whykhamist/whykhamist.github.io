@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-5">
-    <SampleBlock label="Glossy" :rawCode="rawGlossy">
+    <SampleBlock id="glossy" label="Glossy" :rawCode="rawGlossy">
       <Glossy />
     </SampleBlock>
   </div>

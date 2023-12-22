@@ -1,6 +1,11 @@
 <template>
-  <PageBlock title="Button" :properties="ButtonProps" :events="ButtonEvents">
-    <div ref="sample" class="flex flex-col gap-5">
+  <PageBlock
+    title="Button"
+    :properties="ButtonProps"
+    :events="ButtonEvents"
+    :dir="content"
+  >
+    <div id="usage" class="flex flex-col gap-5">
       <div class="py-5 text-5xl font-bold text-primary">Usage</div>
       <div
         class="rounded-2xl border-4 border-foreground/25 px-3 py-1 font-mono dark:bg-dark dark:text-light"
@@ -28,4 +33,17 @@ const CodeBlock = defineAsyncComponent(() =>
 );
 
 const Usage = defineAsyncComponent(() => import("./usage.vue"));
+
+const content = ref([
+  {
+    label: "Usage",
+    name: "usage",
+    sub: [
+      {
+        label: "Glossy",
+        name: "glossy",
+      },
+    ],
+  },
+]);
 </script>
