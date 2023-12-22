@@ -1,6 +1,6 @@
 <template>
   <Header
-    class="z-50 grid border-b-2 border-foreground/25 bg-background p-0 py-1 text-foreground backdrop-blur-sm transition-colors duration-1000"
+    class="z-50 grid border-b-2 border-foreground/25 bg-background p-0 text-foreground backdrop-blur-sm transition-colors duration-1000"
     :class="[systemStore.settings.navbar.fixed && 'fixed left-0 top-0 z-10']"
     :style="{ right: `${layoutWidthNoScroll}px` }"
   >
