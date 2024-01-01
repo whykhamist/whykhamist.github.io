@@ -1,0 +1,13 @@
+[
+  {
+    "name": "default",
+    "description": "Main content of the dialog.",
+    "scopes": [
+      {
+        "name": "close",
+        "type": "Function",
+        "description": "Function to close the dialog regardless if <b>persistent</b> is true."
+      }
+    ]
+  }
+]

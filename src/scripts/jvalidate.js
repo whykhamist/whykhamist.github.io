@@ -87,6 +87,7 @@ let validators = {
       if (value) {
         return !isNaN(value);
       }
+      return true;
     },
   },
   minLength: {
@@ -118,7 +119,7 @@ let validators = {
   min: {
     errorMessage: errorMessages.min,
     method: function (value, min) {
-      if (value < min) {
+      if (value !== null && value !== undefined && value < min) {
         return false;
       }
       return true;
@@ -127,7 +128,7 @@ let validators = {
   max: {
     errorMessage: errorMessages.max,
     method: function (value, max) {
-      if (value > max) {
+      if (value !== null && value !== undefined && value > max) {
         return false;
       }
       return true;

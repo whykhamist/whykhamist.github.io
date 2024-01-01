@@ -1,7 +1,18 @@
 <template>
-  <div v-if="devt" :style="style"></div>
+  <div v-if="devt" :style="style" class="h-screen w-screen"></div>
   <template v-else>
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <transition
+        enter-from-class="opacity-0 blur-md"
+        leave-to-class="opacity-0 blur-md"
+        enter-active-class="transition duration-300 delay-300"
+        leave-active-class="transition duration-300"
+        @before-leave="transitioning = true"
+        @after-enter="transitioning = false"
+      >
+        <component :is="Component"> </component>
+      </transition>
+    </router-view>
     <teleport to="body">
       <NotificationGroup group="main">
         <div
@@ -94,7 +105,7 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, inject } from "vue";
+import { computed, defineAsyncComponent, inject, ref, watch } from "vue";
 import InstallPrompt from "@/components/others/pwaInstallPrompt.vue";
 import DevtBlocked from "@/components/others/devtBlocked.vue";
 const devt = inject("devt");
@@ -106,10 +117,18 @@ const Refresher = defineAsyncComponent(() =>
   import("@/plugins/pwa/refreshPrompt.vue")
 );
 
+const transitioning = ref(false);
+
 const imageURL = new URL("@/assets/rick.gif", import.meta.url).href;
 const style = computed(() => ({
   background: `url('${imageURL}')`,
-  width: "100dvw",
-  height: "100dvh",
 }));
+
+watch(transitioning, (val) => {
+  if (val) {
+    document.documentElement.style.overflow = "hidden";
+  } else {
+    document.documentElement.style.overflow = "";
+  }
+});
 </script>

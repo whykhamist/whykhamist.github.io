@@ -10,15 +10,18 @@
       <div
         class="rounded-2xl border-4 border-foreground/25 px-3 py-1 font-mono dark:bg-dark dark:text-light"
       >
-        <CodeBlock code="<TCollapse ...>...</TCollapse>" />
+        <CodeBlock
+          :code="`<TCollapse ...>...</TCollapse>\nOR\n<t-collapse ...>...</t-collapse>`"
+          class="font-bold"
+        />
       </div>
-      <Usage />
+      <Usage @load="onLoad" />
     </div>
   </PageBlock>
 </template>
 
 <script setup>
-import { defineAsyncComponent, onMounted, ref } from "vue";
+import { defineAsyncComponent, ref } from "vue";
 
 import compProps from "./props.json";
 import compEvents from "./events.json";
@@ -31,12 +34,15 @@ const PageBlock = defineAsyncComponent(() =>
 const CodeBlock = defineAsyncComponent(() =>
   import("../../utils/codeBlock.vue")
 );
-const Usage = defineAsyncComponent(() => import("./usage.vue"));
+const Usage = defineAsyncComponent(() => import("./samples/index.vue"));
 
-const content = ref([
-  {
+const content = ref([]);
+
+const onLoad = (e) => {
+  content.value.push({
     label: "Usage",
     name: "usage",
-  },
-]);
+    sub: e.dirs,
+  });
+};
 </script>

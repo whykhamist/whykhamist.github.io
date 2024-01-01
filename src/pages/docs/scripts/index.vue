@@ -1,0 +1,28 @@
+<template>
+  <Page class="p-3" :class="[transitioning && 'overflow-hidden']">
+    <ScriptsInfo v-if="route.name == 'scripts'" />
+    <router-view v-else v-slot="{ Component }">
+      <transition
+        enter-from-class="opacity-0 blur-md"
+        leave-to-class="opacity-0 blur-md"
+        enter-active-class="transition duration-300 delay-300"
+        leave-active-class="transition duration-300"
+        @before-leave="transitioning = true"
+        @after-enter="transitioning = false"
+      >
+        <component :is="Component"> </component>
+      </transition>
+    </router-view>
+  </Page>
+</template>
+
+<script setup>
+import { defineAsyncComponent, onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+
+const ScriptsInfo = defineAsyncComponent(() => import("./info.vue"));
+
+const transitioning = ref(false);
+</script>

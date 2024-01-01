@@ -1,0 +1,128 @@
+[
+  {
+    "name": "modelValue",
+    "type": "Boolean",
+    "description": "Main model to Opens/Closes the component. Use this together with the @update:modelValue event or use v-model."
+  },
+  {
+    "name": "contain",
+    "type": "Boolean",
+    "description": [
+      {
+        "type": "text",
+        "content": "Contain the dialog inside the immediate parent element."
+      },
+      {
+        "type": "html",
+        "content": "<div class='bg-warning/25 px-3 py-1 border border-warning rounded-lg'><b>Note!</b> The containing parent must have a position of relative.</div>"
+      }
+    ],
+    "default": "false"
+  },
+  {
+    "name": "persistent",
+    "type": "Boolean",
+    "description": "Prevent dialog closing when clicking on the backdrop. (Must be manually closed: set \"modelValue\" to false)",
+    "default": "false"
+  },
+  {
+    "name": "seamless",
+    "type": "Boolean",
+    "description": "Removes the backdrop and allows the parent to scroll",
+    "default": "false"
+  },
+  {
+    "name": "fullScreen",
+    "type": "Boolean",
+    "description": [
+      {
+        "type": "text",
+        "content": "Sets the container element to have 100% width & height."
+      },
+      {
+        "type": "html",
+        "content": "<div class='bg-warning/25 px-3 py-1 border border-warning rounded-lg'><b>Note!</b> You're still required to give the child component explicit dimensions (100% width & height) to fill the dialog.</div>"
+      }
+    ],
+    "default": "false"
+  },
+  {
+    "name": "fullWidth",
+    "type": "Boolean",
+    "description": [
+      {
+        "type": "text",
+        "content": "Sets the container element to have 100% width."
+      },
+      {
+        "type": "html",
+        "content": "<div class='bg-warning/25 px-3 py-1 border border-warning rounded-lg'><b>Note!</b> You're still required to give the child component explicit width (100%) to fill the dialog's width.</div>"
+      }
+    ],
+    "default": "false"
+  },
+  {
+    "name": "fullHeight",
+    "type": "Boolean",
+    "description": [
+      {
+        "type": "text",
+        "content": "Sets the container element to have 100% height."
+      },
+      {
+        "type": "html",
+        "content": "<div class='bg-warning/25 px-3 py-1 border border-warning rounded-lg'><b>Note!</b> You're still required to give the child component explicit height (100%) to fill the dialog's height.</div>"
+      }
+    ],
+    "default": "false"
+  },
+  {
+    "name": "blur",
+    "type": "Boolean",
+    "description": [
+      {
+        "type": "html",
+        "content": "<div class='bg-negative/25 rounded-lg border border-negative px-3 py-1'><b>Note!</b> This feature is experimental and may cause some performance hit. <b>Use at your own risk!</b></div>"
+      },
+      {
+        "type": "text",
+        "content": "Blurs the children of the parent element."
+      }
+    ],
+    "default": "false"
+  },
+  {
+    "name": "position",
+    "type": "String",
+    "description": "The position of the dialog's child component.",
+    "default": "center",
+    "examples": [
+      "center",
+      "top",
+      "bottom",
+      "left",
+      "right",
+      "top-left",
+      "top-right",
+      "bottom-left",
+      "bottom-right"
+    ]
+  },
+  {
+    "name": "transition",
+    "type": "String",
+    "description": "The transition name to use when presenting the child component.",
+    "default": "pop",
+    "examples": [
+      "pop",
+      "slide-left",
+      "slide-right",
+      "slide-up",
+      "slide-down",
+      "pop-slide-left",
+      "pop-slide-right",
+      "pop-slide-up",
+      "pop-slide-down"
+    ]
+  }
+]

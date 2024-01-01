@@ -9,6 +9,7 @@ import { PiniaSharedState } from "pinia-shared-state";
 
 import Notifications from "notiwind";
 import VueApexCharts from "vue3-apexcharts";
+import VueVirtualScroller from "vue-virtual-scroller";
 
 import TRipple from "@/plugins/directives/tRipple";
 import TrapFocus from "@/plugins/directives/trapFocus";
@@ -50,6 +51,7 @@ async function init() {
   app.use(Themed);
   app.use(Connectivity);
   app.use(SideBar);
+  app.use(VueVirtualScroller);
 
   app.directive("ripple", TRipple);
   app.directive("trapFocus", TrapFocus);

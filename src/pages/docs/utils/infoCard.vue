@@ -40,7 +40,6 @@
         />
       </template>
     </TCardBody>
-    <TInnerLoading :active="false" />
   </TCard>
 </template>
 

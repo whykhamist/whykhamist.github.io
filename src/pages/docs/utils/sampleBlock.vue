@@ -2,11 +2,17 @@
   <TCard class="relative border-4 bg-opacity-25">
     <TCardHeader class="border-none">
       <TCardTitle class="!text-2xl !font-bold"> {{ label }} </TCardTitle>
-      <TButton icon="code" class="rounded-full p-1" @click="expand = !expand" />
+      <TButton
+        v-if="!!slots.default"
+        icon="code"
+        class="rounded-full p-1"
+        @click="expand = !expand"
+      />
     </TCardHeader>
-    <TCollapse v-model="expand">
+    <TCollapse :modelValue="expand || !slots.default">
       <div class="group relative flex flex-col">
         <div
+          v-if="parts > 1"
           class="flex items-center border-b border-foreground/25 bg-background"
         >
           <TButton
@@ -50,7 +56,7 @@
             @click="codeType = 'all'"
           />
         </div>
-        <div class="max-h-screen-75 overflow-auto px-3 py-2">
+        <div class="h-screen max-h-screen-75 overflow-auto px-3 py-2">
           <CodeBlock v-if="!!html && codeType == 'html'" :code="html" />
           <CodeBlock v-if="!!script && codeType == 'script'" :code="script" />
           <CodeBlock v-if="!!css && codeType == 'css'" :code="css" />
@@ -68,6 +74,7 @@
       </div>
     </TCollapse>
     <TCardBody
+      v-if="!!slots.default"
       class="flex flex-col border-t border-foreground/25 bg-background"
     >
       <slot></slot>
@@ -76,8 +83,17 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, onMounted, ref, watch } from "vue";
+import {
+  computed,
+  defineAsyncComponent,
+  onMounted,
+  ref,
+  useSlots,
+  watch,
+} from "vue";
 import { notify } from "@/scripts";
+
+const slots = useSlots();
 const props = defineProps({
   label: String,
   rawCode: String,
@@ -93,7 +109,6 @@ const matchers = {
 
 const expand = ref(false);
 const codeType = ref("html");
-
 const html = ref(null);
 const script = ref(null);
 const css = ref(null);
@@ -113,6 +128,18 @@ const splitToParts = (raw) => {
   !!html.value && parts.value++;
   !!script.value && parts.value++;
   !!css.value && parts.value++;
+};
+
+const setFirstTab = () => {
+  if (!!html.value) {
+    codeType.value = "html";
+  } else if (!!script.value) {
+    codeType.value = "script";
+  } else if (!!css.value) {
+    codeType.value = "css";
+  } else {
+    codeType.value = "all";
+  }
 };
 
 const copyCode = () => {
@@ -144,5 +171,6 @@ watch(
 
 onMounted(() => {
   splitToParts(props.rawCode);
+  setFirstTab();
 });
 </script>

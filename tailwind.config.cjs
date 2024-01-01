@@ -100,13 +100,5 @@ module.exports = {
         /-(primary|secondary|accent|dark|light|background|foreground|background-accent|page-background|positive|negative|info|warning)/,
     },
   ],
-  plugins: [
-    twScrollBar({ nocompatible: true }),
-    twTypography,
-    function ({ matchVariant }) {
-      matchVariant("has", (value) => {
-        return `&:has(${value})`;
-      });
-    },
-  ],
+  plugins: [twScrollBar({ nocompatible: true }), twTypography],
 };

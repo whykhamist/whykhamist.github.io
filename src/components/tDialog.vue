@@ -4,11 +4,10 @@
       <component
         v-if="_open"
         :is="'div'"
-        class="__dialog__ pointer-events-none absolute inset-0 z-[1030]"
-        :class="[!contain && 'z-[1030]', contain && 'z-20']"
+        class="__dialog__ pointer-events-none inset-0"
+        :class="[!contain && 'fixed z-[1030]', contain && 'absolute z-20']"
         ref="$el"
         v-trap-focus
-        @keyup.esc="close(false)"
       >
         <div
           class="__dialog_container__ pointer-events-none relative flex h-full w-full"
@@ -24,7 +23,6 @@
             class="__dialog_wrapper__ pointer-events-auto absolute"
             :class="_wrapperClass"
             ref="$contentWrapper"
-            @keyup.esc="close(false)"
           >
             <slot :close="() => close(true)"></slot>
           </div>
@@ -110,7 +108,7 @@ const props = defineProps({
     default: "",
   },
 });
-const emits = defineEmits(["update:modelValue", "open"]);
+const emits = defineEmits(["update:modelValue"]);
 
 const isOpen = ref(false);
 const $el = ref(null);
@@ -178,6 +176,12 @@ const strToArray = (args) => {
   return Array.isArray(args) ? args : [args];
 };
 
+const onKeyup = (e) => {
+  if (e.code == "Escape") {
+    close(false);
+  }
+};
+
 watch(_parentEl, (newVal) => {
   if (newVal && _open && !props.seamless) {
     $el.value.focus();
@@ -191,6 +195,7 @@ watch(_parentEl, (newVal) => {
     }
   }
 });
+
 watch(_open, (newVal) => {
   if (!newVal && !props.seamless) {
     _parentEl.value.classList.remove("__dialog_open__");
@@ -199,6 +204,12 @@ watch(_open, (newVal) => {
         child.classList.remove("__dialog_blur__");
       }
     });
+  }
+
+  if (newVal && !props.contain) {
+    document.addEventListener("keyup", onKeyup);
+  } else {
+    document.removeEventListener("keyup", onKeyup);
   }
 });
 </script>

@@ -52,6 +52,19 @@
         </div>
       </div>
     </div>
+
+    <div id="usage" class="flex flex-col gap-5">
+      <div class="py-5 text-5xl font-bold text-primary">Usage</div>
+      <div
+        class="rounded-2xl border-4 border-foreground/25 px-3 py-1 font-mono dark:bg-dark dark:text-light"
+      >
+        <CodeBlock
+          :code="`<TIcon ...>...</TIcon>\nOR\n<t-icon ...>...</t-icon>`"
+          class="font-bold"
+        />
+      </div>
+      <Usage />
+    </div>
   </PageBlock>
 </template>
 
@@ -65,11 +78,16 @@ const PageBlock = defineAsyncComponent(() =>
 const CodeBlock = defineAsyncComponent(() =>
   import("../../utils/codeBlock.vue")
 );
+const Usage = defineAsyncComponent(() => import("./usage/index.vue"));
 
 const dirs = ref([
   {
     label: "Sizes",
     name: "sizes",
+  },
+  {
+    name: "usage",
+    label: "Usage",
   },
 ]);
 

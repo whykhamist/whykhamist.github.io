@@ -1,5 +1,5 @@
 <template>
-  <main class="layout-page overflow-auto">
+  <main class="layout-page">
     <slot></slot>
   </main>
 </template>

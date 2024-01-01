@@ -18,7 +18,7 @@
           Loading assets/modules for offline support.
         </TToolTip>
       </div>
-      <div
+      <!-- <div
         v-else-if="offlinePWA.ready && offlinePWA.confirm"
         class="fixed bottom-20 right-2"
       >
@@ -31,7 +31,7 @@
           }"
           @click="offlinePWA.confirm = !offlinePWA.confirm"
         />
-      </div>
+      </div> -->
       <div
         v-else-if="offlinePWA.ready && !offlinePWA.confirm"
         class="fixed bottom-14 right-2 z-[9997] rounded-xl border-4 border-gray-400 bg-black px-3 py-2 text-white shadow-md shadow-foreground/25 transition-all"

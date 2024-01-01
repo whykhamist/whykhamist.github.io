@@ -15,7 +15,7 @@
           class="font-bold"
         />
       </div>
-      <Usage />
+      <Usage @load="onLoad" />
     </div>
   </PageBlock>
 </template>
@@ -32,18 +32,15 @@ const CodeBlock = defineAsyncComponent(() =>
   import("../../utils/codeBlock.vue")
 );
 
-const Usage = defineAsyncComponent(() => import("./usage.vue"));
+const Usage = defineAsyncComponent(() => import("./usage/index.vue"));
 
-const content = ref([
-  {
+const content = ref([]);
+
+const onLoad = (e) => {
+  content.value.push({
     label: "Usage",
     name: "usage",
-    sub: [
-      {
-        label: "Glossy",
-        name: "glossy",
-      },
-    ],
-  },
-]);
+    sub: e.dirs,
+  });
+};
 </script>

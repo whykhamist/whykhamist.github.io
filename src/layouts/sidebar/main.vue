@@ -60,7 +60,7 @@
         </div>
         <template v-for="link in m.links" :key="link">
           <ActionButton
-            v-if="!!link.to"
+            v-if="!!link.to && !link.sub"
             :label="!transitioning && collapsed ? null : link.label"
             :tooltip="!collapsed ? null : link.label"
             :to="link.to"
@@ -103,6 +103,7 @@
               :label="!transitioning && collapsed ? null : link.label"
               :tooltip="!collapsed ? null : link.label"
               :menu="link"
+              :to="link.to"
               :icon="link.icon"
               :labelClass="{
                 'transition-all duration-300': true,

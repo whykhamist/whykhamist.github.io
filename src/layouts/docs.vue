@@ -60,11 +60,7 @@
         @close="rtlSideBar.show = false"
       />
     </PageContainer>
-    <TScrollUp
-      class="bottom-5 right-8 z-50 rounded-2xl bg-gray-900/75 px-5 py-2 text-gray-100 shadow-md dark:bg-gray-500/75"
-    >
-      <TIcon name="keyboard_double_arrow_up" size="sm" />
-    </TScrollUp>
+    <UpScroll />
     <Footer
       class="flex h-32 items-end justify-end border-t border-foreground/25 bg-gray-300 dark:bg-gray-700"
     >
@@ -93,6 +89,7 @@ const LSLayout = defineAsyncComponent(() => import("./lockScreenLayout.vue"));
 const TopNav = defineAsyncComponent(() => import("./topNav.vue"));
 const SideBar = defineAsyncComponent(() => import("./sidebar/main.vue"));
 const RtlSideBar = defineAsyncComponent(() => import("./sidebar/rMain.vue"));
+const UpScroll = defineAsyncComponent(() => import("./upScroll.vue"));
 
 const systemStore = useSystemStore();
 
@@ -114,6 +111,10 @@ const menu = ref([
     hidden: false,
     links: [
       {
+        label: "Installed Packages",
+        to: { name: "packages" },
+      },
+      {
         label: "Components",
         sub: [
           {
@@ -123,6 +124,10 @@ const menu = ref([
           {
             label: "Collapse",
             to: { name: "collapse" },
+          },
+          {
+            label: "Dialog (modal)",
+            to: { name: "dialog" },
           },
           {
             label: "Forms",
@@ -147,6 +152,16 @@ const menu = ref([
           },
         ],
       },
+      {
+        label: "Scripts",
+        to: { name: "scripts" },
+        sub: [
+          {
+            label: "Input Field",
+            to: { name: "inputfield" },
+          },
+        ],
+      },
     ],
   },
   {
@@ -161,6 +176,8 @@ const menu = ref([
     ],
   },
 ]);
+
+const suTarget = computed(() => document);
 
 watch($xl, () => {
   sideBar.value.show = false;

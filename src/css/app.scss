@@ -2,31 +2,28 @@
 
 @layer base {
   :root {
-    --color-background: 80 9% 93%;
-    --color-foreground: 300 7% 3%;
-    --color-background-accent: 281 9% 53%;
-    --color-page-background: 280 9% 93%;
-    // --color-primary: 282 9% 37%;
-    --color-primary: 198 100% 50%;
-
+    --color-primary: 210deg 79% 46%;
     --color-secondary: 174deg 63% 40%;
     --color-accent: 291deg 64% 42%;
+    --color-background: 0deg 0% 96%;
+    --color-background-accent: 210deg 17% 98%;
     // --color-foreground: 210deg 7% 40%;
+    --color-foreground: 30deg 7% 21%;
     --color-dark: 30deg 7% 21%;
     --color-light: 246deg 13% 95%;
     --color-positive: 134deg 70% 43%;
     --color-negative: 353deg 100% 38%;
     --color-info: 190deg 83% 56%;
     --color-warning: 44deg 88% 58%;
+    --color-page-background: 210deg 17% 98%;
     /* --color-page-background: 210deg 13% 97%; */
   }
 
   :root[class="dark"] {
-    --color-background: 280 9% 7%;
-    --color-foreground: 300 7% 97%;
-    --color-background-accent: 281 9% 47%;
-    --color-page-background: 280 9% 7%;
-    // --color-primary: 282 9% 63%;
+    --color-background: 210deg 14% 12%;
+    --color-foreground: 210deg 7% 81%;
+    --color-background-accent: 210deg 5% 21%;
+    --color-page-background: 210deg 3% 16%;
   }
 }
 
@@ -36,7 +33,7 @@
   }
 
   body {
-    @apply max-h-screen overflow-y-auto;
+    @apply max-h-screen;
   }
 
   div#app {

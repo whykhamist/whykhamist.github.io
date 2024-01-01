@@ -1,7 +1,42 @@
 <template>
   <div class="grid">
+    <div
+      v-if="!!to"
+      class="has flex items-stretch [&>*]:border-y [&>*]:border-transparent [&>*]:px-3 [&>*]:py-1 first:[&>*]:flex-auto first:[&>*]:rounded-l-lg first:[&>*]:border-l last:[&>*]:rounded-r-lg last:[&>*]:border-r"
+    >
+      <TButton :to="to" :class="{ ..._btnClass }">
+        <div
+          class="pointer-events-none flex items-center gap-1 whitespace-nowrap"
+        >
+          <TIcon :name="icon" :type="iconType" />
+          <div
+            v-if="!!label"
+            class="flex-auto whitespace-nowrap text-start font-semibold"
+          >
+            {{ label }}
+          </div>
+        </div>
+      </TButton>
+      <TButton
+        @click="_open = !_open"
+        :class="{
+          ..._btnClass,
+          'router-link-active': _open,
+          'router-link-exact-active': routerLinkExactActive,
+        }"
+      >
+        <div class="pointer-events-none flex items-center justify-center">
+          <TIcon
+            :name="_open ? closeIcon : openIcon"
+            :type="iconType"
+            class="transition"
+            :class="{ 'rotate-180': _open }"
+          />
+        </div>
+      </TButton>
+    </div>
     <ActionButton
-      v-if="!noOpener"
+      v-else-if="!noOpener"
       :label="label"
       v-bind="icons"
       :tooltip="tooltip"
@@ -55,10 +90,11 @@ import {
   useSlots,
   watch,
 } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { Helpers } from "@/scripts";
 
 const route = useRoute();
+const router = useRouter();
 const ActionButton = defineAsyncComponent(() => import("./actionButton.vue"));
 const Grouped = defineAsyncComponent(() => import("./grouped.vue"));
 const props = defineProps({
@@ -69,6 +105,10 @@ const props = defineProps({
   menu: Object,
   open: {
     type: Boolean,
+    default: null,
+  },
+  to: {
+    type: Object,
     default: null,
   },
   icon: {
@@ -148,6 +188,18 @@ const icons = computed(() => {
   return result;
 });
 
+const routerLinkActive = computed(() => {
+  if (!!props.to) {
+    let resolved = router.resolve(props.to);
+    return route.matched.some((r) => r.path == resolved.fullPath);
+  }
+  return false;
+});
+
+const routerLinkExactActive = computed(
+  () => !!props.to && router.resolve(props.to).fullPath == route.fullPath
+);
+
 const _btnClass = computed(() => Helpers.classFormatter(props.btnClass));
 
 const _labelClass = computed(() => Helpers.classFormatter(props.labelClass));
@@ -171,6 +223,12 @@ watch(
     isOpen.value = val;
   }
 );
+
+watch(route, (val) => {
+  if (routerLinkActive.value && !routerLinkExactActive.value) {
+    _open.value = true;
+  }
+});
 
 onMounted(() => {
   checkActive();

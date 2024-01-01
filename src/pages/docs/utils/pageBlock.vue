@@ -3,7 +3,18 @@
     class="relative flex min-h-full max-w-full flex-auto flex-col gap-5 rounded-2xl"
   >
     <slot name="title">
-      <div class="text-7xl font-bold">{{ title }}</div>
+      <div class="flex flex-col">
+        <div class="text-7xl font-bold">{{ title }}</div>
+        <div
+          v-if="!!docDate || !!codeDate"
+          class="flex items-center justify-end gap-2 font-bold italic text-zinc-500"
+        >
+          <div v-if="!!docDate" class="flex-auto">
+            Doc: {{ Helpers.formatDate(docDate) }}
+          </div>
+          <div v-if="!!codeDate">Code: {{ Helpers.formatDate(codeDate) }}</div>
+        </div>
+      </div>
     </slot>
     <slot name="intro"> </slot>
     <InfoCard
@@ -45,6 +56,7 @@ import {
 } from "vue";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 import { useRoute, useRouter } from "vue-router";
+import { Helpers } from "@/scripts";
 
 const route = useRoute();
 const router = useRouter();
@@ -69,6 +81,14 @@ const props = defineProps({
   },
   slots: {
     type: Object,
+    default: null,
+  },
+  docDate: {
+    type: String,
+    default: null,
+  },
+  codeDate: {
+    type: String,
     default: null,
   },
 });
@@ -116,10 +136,11 @@ watch(contents, (val) => {
 
 onMounted(() => {
   rtlSideBar.value.menu = contents.value;
-  if (!!route.hash)
+  if (!!route.hash) {
     setTimeout(() => {
       scrollToHash(route.hash);
-    }, 500);
+    }, 750);
+  }
 });
 
 onBeforeUnmount(() => {

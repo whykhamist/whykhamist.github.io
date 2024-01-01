@@ -1,0 +1,14 @@
+[
+  {
+    "name": "@update:modelValue",
+    "type": "(value) => void",
+    "description": "Emmitted when the modelValue changes.",
+    "params": [
+      {
+        "name": "value",
+        "type": "Boolean",
+        "description": "Emmitted value on model change"
+      }
+    ]
+  }
+]
