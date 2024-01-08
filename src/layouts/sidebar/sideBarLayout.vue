@@ -70,9 +70,11 @@ const parentYPadding = computed(() => {
 });
 const rightBar = computed(() => systemStore.settings.sidebar.right);
 const topOffset = computed(() => {
+  let paddingY = parentYPadding.value / 2;
+  let headerHeight = props.headerSize?.height ?? 0;
   let offset = systemStore.settings.navbar.fixed
-    ? `${props.headerSize?.height ?? 0}px`
-    : `${parentYPadding.value / 2}px`;
+    ? `${headerHeight + paddingY}px`
+    : `${paddingY}px`;
   return !props.fixed ? offset : "";
 });
 const maxHeight = computed(() => {
