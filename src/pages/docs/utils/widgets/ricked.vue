@@ -1,5 +1,5 @@
 <template>
-  <div class="prose flex !max-w-none justify-center">
+  <div class="flex justify-center">
     <pre v-html="code" class="!bg-transparent text-xs leading-none" />
   </div>
 </template>
