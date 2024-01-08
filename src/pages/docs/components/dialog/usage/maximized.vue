@@ -23,20 +23,18 @@
       :fullScreen="type == 'screen'"
       v-slot="{ close }"
     >
-      <div
-        class="flex h-full max-h-screen min-h-screen-35 w-full min-w-screen-35 max-w-screen flex-col bg-background-accent"
-      >
-        <div class="flex items-center gap-1 bg-background px-3">
-          <div class="flex-auto"></div>
+      <TCard class="h-full w-full !rounded-none">
+        <TCardHeader>
+          <TCardTitle></TCardTitle>
           <TButton icon="minimize" />
           <TButton icon="square" />
           <TButton icon="close" @click="close" />
-        </div>
-        <div class="flex-auto overflow-y-scroll p-3">
-          <RickRolled />
-        </div>
-        <div class="min-h-4 bg-background"></div>
-      </div>
+        </TCardHeader>
+        <TCardBody>
+          <RickRolled class="text-foreground" />
+        </TCardBody>
+        <TCardFooter />
+      </TCard>
     </TDialog>
   </div>
 </template>
