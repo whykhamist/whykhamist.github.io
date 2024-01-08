@@ -1,11 +1,11 @@
 <template>
   <TCard class="mb-2 bg-slate-100 dark:bg-slate-900">
     <TCardBody class="flex min-w-max justify-center gap-1 text-xs">
-      <slot :link="link" :index="index" :total="visibleLinks.length">
-        <template
-          v-for="(link, index) in visibleLinks"
-          :key="`nav_link_${link.label}`"
-        >
+      <template
+        v-for="(link, index) in visibleLinks"
+        :key="`nav_link_${link.label}`"
+      >
+        <slot :link="link" :index="index" :total="visibleLinks.length">
           <TButton
             :icon="link.icon"
             iconSize="sm"
@@ -19,8 +19,8 @@
             v-if="index != visibleLinks.length - 1"
             class="border-l border-slate-700/25"
           />
-        </template>
-      </slot>
+        </slot>
+      </template>
     </TCardBody>
   </TCard>
 </template>
