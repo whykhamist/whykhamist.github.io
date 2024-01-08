@@ -62,12 +62,10 @@ const scrollUp = () => {
 
 const onScroll = (e) => {
   let scrollYOffset = e.target.scrollTop;
-  console.log(e);
   show.value = scrollYOffset > props.offset;
 };
 
 onMounted(() => {
-  console.log(props.target);
   props.target.addEventListener("scroll", onScroll);
 });
 
