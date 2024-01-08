@@ -14,7 +14,7 @@ const Router = createRouter({
         behavior: "smooth",
       };
     } else {
-      return { top: 0, left: 0 };
+      if (to.path != from.path) return { top: 0, left: 0, behavior: "smooth" };
     }
   },
   history: createWebHistory(),
